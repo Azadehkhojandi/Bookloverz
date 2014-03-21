@@ -6374,3 +6374,9 @@ section.main-section {
   width: 100%;
   float: left;
   text-align: center; }
+
+.screen-search {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 100%;
+  float: left; }

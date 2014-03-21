@@ -13,3 +13,7 @@ section{
 	@include grid-column(12);
 	text-align: center;
 }
+
+.screen-search{
+	@include grid-column(12);
+}

@@ -69,17 +69,30 @@
                     <div google-connect=""></div>
                 </div>
                 <div class="screen-search">
-
+                    <div ng-controller="SearchCtrl">
+                        <div ng-repeat="book in books.items">
+                            <h3 class="">{{book.volumeInfo.title}}</h3>
+                            <p class="">{{book.volumeInfo.description}}</p>
+                            <p>
+                                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+                            </p>
+                            <ul class="">
+                                <li ng-repeat="author in book.volumeInfo.authors">
+                                    <span>{{author}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <form ng-submit="search()">
+                            <input type="text" ng-model="keyword" size="30" placeholder="Search for a book">
+                            <select ng-model="term" ng-options="obj.value as obj.text for obj in terms"></select>
+                            <input class="" type="submit" value="search">
+                        </form>
+                    </div>
                 </div>
-
-
-                    <div ng-controller="GoogleUserProfileCtrl">
-
-
-        <div id="profile" style="display: none"></div>
-        <div id="friends" style="display: none"></div>
+                <div ng-controller="GoogleUserProfileCtrl">
 
     </div>
+
 
 
     <div ng-controller="GoogleUserProfileCtrl">
@@ -101,36 +114,8 @@
 
     </div>
 
-    <div ng-controller="SearchCtrl">
 
 
-        <div ng-repeat="book in books.items">
-
-
-            <h3 class="">{{book.volumeInfo.title}}</h3>
-            <p class="">{{book.volumeInfo.description}}</p>
-            <p>
-                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
-            </p>
-            <ul class="">
-                <li ng-repeat="author in book.volumeInfo.authors">
-                    <span>{{author}}</span>
-                </li>
-            </ul>
-
-        </div>
-        <form ng-submit="search()">
-            <p>
-                Returns results where the  
-        <input type="text" ng-model="keyword" size="30"
-            placeholder="type any book's name">
-                is found
-                <select ng-model="term" ng-options="obj.value as obj.text for obj in terms">
-                </select>
-            </p>
-            <input class="" type="submit" value="search">
-        </form>
-    </div>
             </section> 
 
             <a class="exit-off-canvas"></a> 
