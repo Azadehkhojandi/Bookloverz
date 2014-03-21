@@ -1,0 +1,9 @@
+
+header{
+	@include grid-row();
+
+	nav{
+		 @include grid-column(12);
+	}
+	
+}
