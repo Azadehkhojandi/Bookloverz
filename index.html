@@ -1,7 +1,17 @@
+<!doctype html>
 <html ng-app="myApp">
 <head>
-    <title>social-authentication-seed</title>
-   
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>the smart foxies</title>
+
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <script src="js/foundation/vendor/modernizr.js"></script>
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
     <script src="/js/app.js"></script>
@@ -12,19 +22,58 @@
 </head>
 
 <body>
+    <div class="off-canvas-wrap"> 
+        <div class="inner-wrap"> 
+
+            <nav class="tab-bar"> 
+                <section class="left-small"> 
+                    <a class="left-off-canvas-toggle menu-icon" ><span></span></a> 
+                </section> 
+                <section class="middle tab-bar-section"> 
+                    <h1 class="title">the smart foxies</h1> 
+                </section> 
+                <section class="right-small"> 
+                    <a class="right-off-canvas-toggle menu-icon" ><span></span></a> 
+                </section> 
+            </nav> 
+
+            <aside class="left-off-canvas-menu"> 
+                <ul class="off-canvas-list"> 
+                    <li><label>menu</label></li> 
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Connect</a></li>
+                    <li><a href="#">Say What</a></li>
+                    <li><a href="#">About the foxies</a></li>
+                </ul> 
+            </aside> 
+
+            <aside class="right-off-canvas-menu"> 
+                <ul class="off-canvas-list"> 
+                    <li><label>messages</label></li> 
+                    <li><a class="new" href="#">Azadeh</a></li>
+                    <li><a href="#">Penny</a></li>
+                </ul> 
+            </aside> 
 
 
-    <div ng-controller="GoogleUserProfileCtrl">
+            <section class="main-section">
+                <div class="screen-home">
+                    <!-- Foxy image -->
+                </div>
+                <div class="screen-connect">
+                    <div google-connect=""></div>
+                </div>
+
+
+                    <div ng-controller="GoogleUserProfileCtrl">
         <p>social-authentication-seed</p>
 
         <div id="logout" style="display: none">
             <button id="disconnect">Logout</button>
         </div>
 
-<h1>Goooooo Foxies!</h1>
         <div id="profile" style="display: none"></div>
-        <div id="friends" style="display: none">
-        </div>
+        <div id="friends" style="display: none"></div>
 
     </div>
 
@@ -78,8 +127,34 @@
             <input class="" type="submit" value="search">
         </form>
     </div>
+            </section> 
 
+            <a class="exit-off-canvas"></a> 
+        </div> 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
     <div id="content"></div>
+    
+
+    <script src="js/foundation/vendor/foundation.min.js"></script>
+    <script src="js/foundation/app.js"></script>
 
 </body>
 
