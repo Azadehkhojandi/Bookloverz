@@ -89,30 +89,28 @@
                         </form>
                     </div>
                 </div>
-                <div ng-controller="GoogleUserProfileCtrl">
-
-    </div>
 
 
+			    <div ng-controller="GoogleUserProfileCtrl">
+			
+			        <button type="button" ng-click="test()">test</button>
+			        <div ng-repeat="bookshelve in bookshelves.items">
+			
+			
+			            <h3 class="">{{bookshelve.title}}</h3>
+			            <p class="">{{bookshelve.volumeCount}}</p>           
+			                <div ng-repeat="volume in bookshelve.volumes">
+			
+			                    <h3 class="">{{bookshelve.title}}</h3>
+			                    <img ng-src="{{bookshelve.imageLinks.thumbnail}}"/>
+			                    <p class="">{{bookshelve.description}}</p>           
+			
+			                </div>
+			        </div>
+			
+			    </div>
 
-    <div ng-controller="GoogleUserProfileCtrl">
-
-        <button type="button" ng-click="test()">test</button>
-        <div ng-repeat="bookshelve in bookshelves.items">
-
-
-            <h3 class="">{{bookshelve.title}}</h3>
-            <p class="">{{bookshelve.volumeCount}}</p>           
-                <div ng-repeat="volume in bookshelve.volumes">
-
-                    <h3 class="">{{bookshelve.title}}</h3>
-                    <img ng-src="{{bookshelve.imageLinks.thumbnail}}"/>
-                    <p class="">{{bookshelve.description}}</p>           
-
-                </div>
-        </div>
-
-    </div>
+			</div>
 
 
 
