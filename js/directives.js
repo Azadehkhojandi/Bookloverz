@@ -78,9 +78,10 @@ myApp.directive('googleConnect', ['UserService',
                             'userId': 'me'
                         });
                         request.execute(function (resp) {
-                            
-                            
+                            if(resp.image.url>0 && resp.image.url.length>0)
+                            {
                             scope.profile.image = resp.image.url;
+                            }
                             scope.profile.displayName=resp.displayName;                          
                             UserService.profile=scope.profile;
                             scope.$apply();
