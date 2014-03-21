@@ -96,7 +96,7 @@ myApp.directive('googleConnect', ['UserService',
                 });
                // scope.gapiStatus();
             },
-            templateUrl: '/app/templates/googleconect.html',
+            templateUrl: '/templates/googleconect.html',
             replace: true
         };
     }]);
