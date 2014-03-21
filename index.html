@@ -1,0 +1,140 @@
+<html ng-app="myApp">
+<head>
+    <title>social-authentication-seed</title>
+    <script type="text/javascript">
+        // (function() {
+        //   var po = document.createElement('script');
+        //   po.type = 'text/javascript'; po.async = true;
+        //   po.src = 'https://plus.google.com/js/client:plusone.js';
+        //   var s = document.getElementsByTagName('script')[0];
+        //   s.parentNode.insertBefore(po, s);
+        // })();
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="/app/js/app.js"></script>
+    <script src="/app/js/controllers.js"></script>
+    <script src="/app/js/directives.js"></script>
+    <script src="/app/js/services.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+</head>
+
+<body>
+
+
+    <div ng-controller="GoogleUserProfileCtrl">
+        <p>social-authentication-seed</p>
+
+        <div id="logout" style="display: none">
+            <button id="disconnect">Logout</button>
+        </div>
+        <!-- <div id="gConnect">
+  <button class="g-signin"
+      data-scope="profile email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/books"
+      data-requestvisibleactions="http://schemas.google.com/AddActivity"
+      data-clientId="458058919748-lr1blgl6cgv1r70d3qhralql0ot59917.apps.googleusercontent.com"
+      data-callback="onGoogleSignInCallback"
+      data-theme="dark"
+       data-cookiepolicy="single_host_origin"
+      data-approvalprompt="force" 
+      
+  </button>  
+</div> -->
+
+
+        <div id="profile" style="display: none"></div>
+        <div id="friends" style="display: none">
+        </div>
+
+    </div>
+
+
+    <div ng-controller="GoogleUserProfileCtrl">
+
+        <button type="button" ng-click="test()">test</button>
+        <div ng-repeat="bookshelve in bookshelves.items">
+
+
+            <h3 class="">{{bookshelve.title}}</h3>
+            <p class="">{{bookshelve.volumeCount}}</p>           
+                <div ng-repeat="volume in bookshelve.volumes">
+
+                    <h3 class="">{{bookshelve.title}}</h3>
+                    <img ng-src="{{bookshelve.imageLinks.thumbnail}}"/>
+                    <p class="">{{bookshelve.description}}</p>           
+
+                </div>
+        </div>
+
+    </div>
+
+    <div ng-controller="SearchCtrl">
+
+
+        <div ng-repeat="book in books.items">
+
+
+            <h3 class="">{{book.volumeInfo.title}}</h3>
+            <p class="">{{book.volumeInfo.description}}</p>
+            <p>
+                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+            </p>
+            <ul class="">
+                <li ng-repeat="author in book.volumeInfo.authors">
+                    <span>{{author}}</span>
+                </li>
+            </ul>
+
+        </div>
+        <form ng-submit="search()">
+            <p>
+                Returns results where the  
+        <input type="text" ng-model="keyword" size="30"
+            placeholder="type any book's name">
+                is found
+                <select ng-model="term" ng-options="obj.value as obj.text for obj in terms">
+                </select>
+            </p>
+            <input class="" type="submit" value="search">
+        </form>
+    </div>
+
+
+
+
+
+
+
+    <script src="/app/js/socialhelper.js"></script>
+    <script>
+        /**
+         * Calls the googleHelper method that handles the authentication flow.
+         *
+         * @param {Object} authResult An Object which contains the access token and
+         *   other authentication information.
+         */
+        function onGoogleSignInCallback(authResult) {
+            console.log(authResult);
+            //googleHelper.onSignInCallback(authResult);
+            googleHelper.Init(authResult, googleInitcallback);
+
+        }
+        function googleInitcallback(response) {
+            if (response.success) {
+                googleHelper.Profile(UISetProfile);
+                googleHelper.Friends(UISetFriends);
+                $("#disconnect").data("socialChannel", "Google");
+
+
+            }
+        }
+
+    </script>
+    <div google-connect=""></div>
+
+    <div id="content"></div>
+    <p>Retrieves your profile name using the Google Plus API.</p>
+</body>
+
+</html>
