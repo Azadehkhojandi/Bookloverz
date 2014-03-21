@@ -50,6 +50,11 @@
                     <li><label>menu</label></li> 
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Connect</a></li>
+                    <li>
+                        <div id="logout" style="display: none;">
+                            <button id="disconnect">Logout</button>
+                        </div>
+                    </li>
                     <li><a href="#">Say What</a></li>
                     <li><a href="#">About the foxies</a></li>
                 </ul> 
@@ -71,26 +76,15 @@
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
+                <div class="screen-search">
+
+                </div>
 
 
                     <div ng-controller="GoogleUserProfileCtrl">
-        <p>social-authentication-seed</p>
 
-        <div id="logout" style="display: none">
-            <button id="disconnect">Logout</button>
-        </div>
-        <!-- <div id="gConnect">
-  <button class="g-signin"
-      data-scope="profile email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/books"
-      data-requestvisibleactions="http://schemas.google.com/AddActivity"
-      data-clientId="458058919748-lr1blgl6cgv1r70d3qhralql0ot59917.apps.googleusercontent.com"
-      data-callback="onGoogleSignInCallback"
-      data-theme="dark"
-       data-cookiepolicy="single_host_origin"
-      data-approvalprompt="force" 
-      
-  </button>  
-</div> -->
+
+        
 
         <div id="profile" style="display: none"></div>
         <div id="friends" style="display: none"></div>

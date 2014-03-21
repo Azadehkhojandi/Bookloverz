@@ -1,0 +1,15 @@
+section{
+	&.main-section{
+		@include grid-row();
+	}
+}
+
+
+.screen-home{
+	@include grid-column(12);
+}
+
+.screen-connect{
+	@include grid-column(12);
+	text-align: center;
+}
