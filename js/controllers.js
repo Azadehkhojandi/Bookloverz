@@ -1,5 +1,30 @@
 'use strict';
 
+myApp.controller('AroundMe', ['$scope', function ($scope) {
+	$scope.people = [
+		{
+			displayName: 'Mr A',
+			image: 'http://',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: 'http://'
+				},
+				title: "Bla"
+			}
+		},
+		{
+			displayName: 'MrB',
+			image: 'http://',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: 'http://'
+				},
+				title: "Bla"
+			}
+		} 
+	];
+}]);
+
 myApp.
     controller('SearchCtrl', [
         '$scope','$http', function ($scope, $http) {

@@ -71,6 +71,19 @@
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
+                
+                <div ng-controller="AroundMe">
+                	<h3>Around Me</h3>
+                	<ul>
+                		<li ng-repeat="person in people">
+	                		<!--
+	                		<img ng-src="{{person.image}}">
+	                		<img ng-src="{{person.volumneInfo.imageLinks.thumbnail}}">
+	                		-->
+                		</li>
+                	</ul>
+                </div>
+                
                 <div class="screen-search">
                     
                     <div ng-controller="SearchCtrl">
@@ -97,7 +110,7 @@
                 </div>
                 <div class="screen-what">
                     <h1>Say what?</h1>
-                    <p>Travelling on public transport can be so dull, right? You starr out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
+                    <p>Travelling on public transport can be so dull, right? You stare out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
                     <p>Go to the smart foxies search and search for the book if you could catch the name. If not, doesn't matter: Sign up to the smart foxies and see books that get read around you. RIGHT NOW! Oh, right, there it is. It's the latest Stephen King and it's Sam, who's reading it! Wonder if it's awesome?</p>
                     <p>Ask Sam, we got a messaging service between members. The best thing: IT'S ALL FOR FREE!</p>
                 </div>
@@ -110,8 +123,6 @@
 
                 <div class="screen-mybooks">
                     <div ng-controller="GoogleUserProfileCtrl">
-                        <button type="button" ng-click="test()">My Books</button>
-
                         <div class="profile">
                             <header>
                                 <h3 class="">My profile</h3>
@@ -124,7 +135,9 @@
                                 <p>A smart foxy that loves, loves books and even has written her own novel.</p>
                             </article>
                             <div class="button-container">
-                                <a href="" class="button">Edit profile on google +</a>
+                                <a href="" class="button" style="margin-top: 15px">Edit profile on google +</a>
+                                
+                                <button type="button" ng-click="test()" style="margin-top: 12px;">Get My Books</button>
                             </div>
                         </div>
 
