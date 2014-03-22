@@ -92,20 +92,20 @@
 
 
 			    <div ng-controller="GoogleUserProfileCtrl">
+			    	<img src="{{profilepic}}">
 			
 			        <button type="button" ng-click="test()">test</button>
-			        <div ng-repeat="bookshelve in bookshelves.items">
+			        <div ng-repeat="bookshelve in bookshelves.items">		
+				            <h3 class="">{{bookshelve.title}}</h3>          
+			                <div ng-repeat="volume in bookshelve.volumes.items">
 			
-			
-			            <h3 class="">{{bookshelve.title}}</h3>
-			            <p class="">{{bookshelve.volumeCount}}</p>           
-			                <div ng-repeat="volume in bookshelve.volumes">
-			
-			                    <h3 class="">{{bookshelve.title}}</h3>
-			                    <img ng-src="{{bookshelve.imageLinks.thumbnail}}"/>
-			                    <p class="">{{bookshelve.description}}</p>           
+			                    
+			                    <img ng-src="{{volume.volumeInfo.thumbnail}}"/>
+			                    <p class="">{{volume.volumeInfo.description}}</p>       
+			                    <h3 class="">{{volume.volumeInfo.title}}</h3>
 			
 			                </div>
+			        	</div>
 			        </div>
 			
 			    </div>
