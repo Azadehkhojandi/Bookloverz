@@ -1,6 +1,10 @@
 'use strict';
 
-myApp.controller('AroundMe', ['$scope', function ($scope) {
+myApp.controller('AroundMe', ['$rootScope', '$scope', function ($rootScope, $scope) {
+	$rootScope.$on('user.updated', function () {
+		$scope.showNow = true;
+	});
+	
 	$scope.people = [
 		{
 			displayName: 'Allison Jones',
@@ -123,13 +127,21 @@ myApp.
 
 myApp.
     controller('GoogleUserProfileCtrl', [
-        '$scope', '$http','UserService', function ($scope, $http,UserService) {
+        '$rootScope', '$scope', '$http','UserService', function ($rootScope, $scope, $http,UserService) {
           
           $scope.bookshelves={
             items:{}
           };
+          
+          $rootScope.$on('user.updated', function (newUser){
+	          $scope.test();
+	          $scope.showNow = true;
+          });
+
 
             $scope.test = function () {
+	            
+
 
                 console.log(UserService);
                 console.log('UserService');

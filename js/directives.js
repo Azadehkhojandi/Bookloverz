@@ -3,8 +3,8 @@
 /* Directives */
 
 
-myApp.directive('googleConnect', ['UserService',
-    function (UserService) {
+myApp.directive('googleConnect', ['$rootScope', 'UserService',
+    function ($rootScope, UserService) {
         return {
             restrict: 'A',
             scope: {},
@@ -84,6 +84,8 @@ myApp.directive('googleConnect', ['UserService',
                             }
                             scope.profile.displayName=resp.displayName;                          
                             UserService.profile=scope.profile;
+                            
+                            $rootScope.$broadcast('user.updated');
                             scope.$apply();
                         });
                     });
@@ -91,6 +93,8 @@ myApp.directive('googleConnect', ['UserService',
 
                 scope.$watch('gapiStatus', function () {
                     console.log('watch gapiStatus');
+                    
+                    
                     if (scope.gapiStatus()) {
                         scope.handleClientLoad();
                     }
