@@ -6348,6 +6348,13 @@ th.hide-for-touch {
 .touch th.show-for-touch {
   display: table-cell !important; }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+
+h1 {
+  font-weight: 800; }
+
 section.main-section {
   width: 100%;
   margin-left: auto;
@@ -6376,6 +6383,12 @@ section.main-section {
   text-align: center; }
 
 .screen-search {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 100%;
+  float: left; }
+
+.screen-what {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;

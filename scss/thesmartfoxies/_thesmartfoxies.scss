@@ -1,3 +1,12 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+}
+
+h1{
+	font-weight: 800;
+}
+
 section{
 	&.main-section{
 		@include grid-row();
@@ -15,5 +24,9 @@ section{
 }
 
 .screen-search{
+	@include grid-column(12);
+}
+
+.screen-what{
 	@include grid-column(12);
 }
