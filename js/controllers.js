@@ -120,30 +120,28 @@ myApp.
     ]);
 
 
-myApp.
-    controller('mainCtrl', [
-        '$scope', 'geolocation', function ($scope,geolocation) {
-          
-    $scope.coords = geolocation.getLocation().then(function(data){
-      return {lat:data.coords.latitude, long:data.coords.longitude};
-    });
-}]);
+
 
 myApp.
     controller('GeoTestCtrl', ['$scope', '$window'
 ,function ($scope, $window) {
+    console.log($window);
     $scope.supportsGeo = $window.navigator;
     $scope.position = null;
-     window.setTimeout($scope.getCurrentPosition, 1);
-      $scope.getCurrentPosition = function() {
-        window.navigator.geolocation.getCurrentPosition(function(position) {
-            $scope.$apply(function() {
-                $scope.position = position;
-            });
-        }, function(error) {
-            alert(error);
-        });
-    };
+    $scope.test='testdddddddd';
+
+
+     //window.setTimeout($scope.getCurrentPosition, 1);
+    // (function () {
+    //     console.log("getCurrentPosition");
+    //     window.navigator.geolocation.getCurrentPosition(function(position) {
+    //         $scope.$apply(function() {
+    //             $scope.position = position;
+    //         });
+    //     }, function(error) {
+    //         alert(error);
+    //     });
+    // }());
 
     $scope.doTest1 = function() {
         window.navigator.geolocation.getCurrentPosition(function(position) {
@@ -167,12 +165,27 @@ myApp.
 
 }]);
 
-myApp.controller('geolocCtrl', ['$geolocation', '$scope', function($geolocation, $scope) {
-        $geolocation.watchPosition({
-            timeout: 60000,
-            maximumAge: 250,
-            enableHighAccuracy: true
-        });
-        $scope.myCoords = $geolocation.position.coords; // this is regularly updated
-        $scope.myError = $geolocation.position.error; // this becomes truthy, and has 'code' and 'message' if an error occurs
-    }]);
+
+  myApp.controller('mainCtrl', [ '$scope','UserService','geolocation','UserInteractionService',function ($scope,UserService,geolocation,UserInteractionService) {
+    $scope.coords = geolocation.getLocation().then(function(data){
+        console.log(data);
+        
+        UserService.lat=data.coords.latitude;
+        UserService.long=data.coords.longitude;
+        
+        UserInteractionService.postUserLoc().success(
+         function(data, status) {
+                    
+                    console.log('handleSuccess');
+                    console.log(data);
+                    console.log(status);
+                });
+
+      return {
+        lat:data.coords.latitude, 
+        long:data.coords.longitude};
+    });
+
+}]);
+
+

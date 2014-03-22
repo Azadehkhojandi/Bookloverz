@@ -14,7 +14,8 @@ myApp.factory('UserService', ['$http',
   return {
       profile : {},
       access_token:'',
-
+      lat:0,
+      long:0,
       postUserInfo: function() {
 
 	
@@ -42,18 +43,42 @@ myApp.factory('UserInteractionService', ['$http','UserService',
 
 	
 return $http({
-    url: 'http://thesmartfoxies.cloudapp.net/api/user',
+    url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
     dataType: 'json',
     method: 'POST',
     data: { 
                 name : UserService.profile.name,
                 email : UserService.profile.email,
-                lat:-33.8707953,
-                long:151.1966107
+                lat:UserService.lat,
+                long:UserService.long
 
             },
     headers: {
         "Content-Type": "application/json"
   
   }
-})}}}]);
+})},
+   postUserLoc: function() {
+
+	
+return $http({
+    url: 'http://127.0.0.1:81/api/UserNearby',
+    dataType: 'json',
+    method: 'POST',
+    data: { 
+                name : UserService.profile.name,
+                email : UserService.profile.email,
+                lat:UserService.lat,
+                long:UserService.long
+
+            },
+    headers: {
+        "Content-Type": "application/json"
+  
+  }
+})}
+
+
+}}]);
+
+
