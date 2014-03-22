@@ -100,24 +100,32 @@
 
 
 			    <div ng-controller="GoogleUserProfileCtrl">
-			    	<img src="{{profilepic}}">
-			
-			        <button type="button" ng-click="test()">test</button>
-			        <div ng-repeat="bookshelve in bookshelves.items">		
+			        <button type="button" ng-click="test()">My Books</button>
+			        <div ng-repeat="bookshelve in bookshelves.items">
+			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
 				            <h3 class="">{{bookshelve.title}}</h3>          
 			                <div ng-repeat="volume in bookshelve.volumes.items">
-			                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/>
-			                    <p class="">{{volume.volumeInfo.description}}</p>       
-			                    <h3 class="">{{volume.volumeInfo.title}}</h3>
+			                	<a href="#" style="float: left; margin: 5px;"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
+			                	<!--
+			                    <p class="">{{volume.volumeInfo.description}}</p>  
+			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
 			                </div>
-			        	</div>
+		                </div>	                
 			        </div>
-			
+			        <div ng-repeat="bookshelve in bookshelves.items">
+			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
+				            <h3 class="">{{bookshelve.title}}</h3>          
+			                <div ng-repeat="volume in bookshelve.volumes.items">
+			                	<a href="#" style="float: left; margin: 5px;"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
+			                	<!--
+			                    <p class="">{{volume.volumeInfo.description}}</p>  
+			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
+			                </div>
+		                </div>	
+			        </div>
 			    </div>
 
 			</div>
-
-
 
             </section> 
 
