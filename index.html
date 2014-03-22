@@ -75,10 +75,31 @@
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
+                
+                <div class="screen-around">
+                    <div ng-controller="AroundMe">
+                        <header>
+                            <h3 class="">Smart foxies around me</h3> 
+                        </header>  
+                        <ul class="list list-people">  
+                    	   <li ng-repeat="person in people">
+                                <a href="">
+                                    <div class="person">
+                                        <img ng-src="{{person.image}}">
+                                    </div>
+                                    <div class="book">
+                                        <img ng-src="{{person.volumneInfo.imageLinks.thumbnail}}">
+                                    </div>
+                                </a>
+                    		</li>
+                    	</ul>
+                    </div>
+                </div>
+                
                 <div class="screen-search">
                     
                     <div ng-controller="SearchCtrl">
-                        <ul class="search-results">
+                        <ul class="list list-search-results">
                             <li ng-repeat="book in books.items">
                                 <a href="">
                                     <h4 class="">{{book.volumeInfo.title}}</h4>
@@ -101,37 +122,80 @@
                 </div>
                 <div class="screen-what">
                     <h1>Say what?</h1>
-                    <p>Travelling on public transport can be so dull, right? You starr out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
+                    <p>Travelling on public transport can be so dull, right? You stare out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
                     <p>Go to the smart foxies search and search for the book if you could catch the name. If not, doesn't matter: Sign up to the smart foxies and see books that get read around you. RIGHT NOW! Oh, right, there it is. It's the latest Stephen King and it's Sam, who's reading it! Wonder if it's awesome?</p>
                     <p>Ask Sam, we got a messaging service between members. The best thing: IT'S ALL FOR FREE!</p>
                 </div>
+                <div class="screen-about">
+                    <h1>Say who?</h1>
+                    
+                </div>
 
 
-			    <div ng-controller="GoogleUserProfileCtrl">
-			        <button type="button" ng-click="test()">My Books</button>
-			        <div ng-repeat="bookshelve in bookshelves.items">
-			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
-				            <h3 class="">{{bookshelve.title}}</h3>          
-			                <div ng-repeat="volume in bookshelve.volumes.items">
-			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
-			                	<!--
-			                    <p class="">{{volume.volumeInfo.description}}</p>  
-			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
-			                </div>
-		                </div>	                
-			        </div>
-			        <div ng-repeat="bookshelve in bookshelves.items">
-			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
-				            <h3 class="">{{bookshelve.title}}</h3>          
-			                <div ng-repeat="volume in bookshelve.volumes.items">
-			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
-			                	<!--
-			                    <p class="">{{volume.volumeInfo.description}}</p>  
-			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
-			                </div>
-		                </div>	
-			        </div>
-			    </div>
+
+                <div class="screen-mybooks">
+                    <div ng-controller="GoogleUserProfileCtrl">
+                        <div class="profile">
+                            <header>
+                                <h3 class="">My profile</h3>
+                            </header>
+                            <div class="figure">
+                                <img src="img/profile-pic.jpg">
+                            </div>
+                            <article>
+                                <h3><span>Katrin Schmidt</span>, 31</h3>
+                                <p>A smart foxy that loves, loves books and even has written her own novel.</p>
+                            </article>
+                            <div class="button-container">
+                                <a href="" class="button" style="margin-top: 15px">Edit profile on google +</a>
+                                
+                                <button type="button" ng-click="test()" style="margin-top: 12px;">Get My Books</button>
+                            </div>
+                        </div>
+
+                        <div ng-repeat="bookshelve in bookshelves.items">
+                            <div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
+                                <header>
+                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <span>{{bookshelve.volumeCount}} in total</span>
+                                </header>
+                                <ul class="list">       
+                                    <li ng-repeat="volume in bookshelve.volumes.items">
+                                        <a href="">
+                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                        <small ng-repeat="author in volume.volumeInfo.authors">
+                                            <span>{{author}}</span>
+                                        </small>
+                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>                  
+                        </div>
+
+                        
+                        <div ng-repeat="bookshelve in bookshelves.items">
+                            <div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">    
+                                <header>
+                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <span>{{bookshelve.volumeCount}} in total</span>
+                                </header>  
+                                <ul class="list">      
+                                    <li ng-repeat="volume in bookshelve.volumes.items">
+                                        <a href="">
+                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                        <small ng-repeat="author in volume.volumeInfo.authors">
+                                            <span>{{author}}</span>
+                                        </small>
+                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                    </a>
+                                    </li>
+                                <ul>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
 
 			</div>
 

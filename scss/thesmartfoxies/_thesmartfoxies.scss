@@ -4,12 +4,17 @@ body{
 	font-size: 18px;
 }
 
+figure{
+	margin: 0; 
+}
+
 button,
 .button{
 	background-color: $foxorange;
 	margin:0;
 
-	&:hover{
+	&:hover,
+	&:focus{
 		background-color: $foxgreen;
 	}
 
@@ -18,7 +23,19 @@ button,
 	}
 }
 
+.button-container{
+	@include grid-column(12);
+	text-align: center;
+}
 
+.tab-bar .menu-icon{
+	&.right-off-canvas-toggle{
+		background: url(../img/envelope.png) no-repeat 7px 10px;
+		span{
+			display: none;
+		}
+	}
+}
 
 h1{
 	@include foxies();
@@ -43,6 +60,46 @@ section{
 	&.main-section{
 		@include grid-row();
 	}
+}
+
+ul.list{
+	margin: 0;
+	padding: 0; 
+	@include grid-row();
+	
+	li{
+			@include grid-column(6);
+			list-style-type: none;
+			height: 280px;
+
+			a{
+				color: $standard;
+
+				h4{
+					margin: 0;
+					font-size: 16px;
+					@include truncate();
+				}
+				small{
+					font-size: 16px;
+				}
+				img{
+					margin: 10px 0;
+				}
+				article{
+					
+				}
+			}
+		}
+
+	&.list-people{
+		.person,
+		.book{
+			width:50%;
+			float: left;
+		}
+	}	
+
 }
 
 ul.off-canvas-list{
@@ -79,36 +136,6 @@ ul.off-canvas-list{
 	border-top: 1px dashed $foxgreen;
 	border-bottom: 1px dashed $foxgreen;
 
-	ul.search-results{
-		@include grid-row();
-		margin: 0;
-
-		li{
-			@include grid-column(6);
-			list-style-type: none;
-			height: 280px;
-
-			a{
-				color: $standard;
-
-				h4{
-					margin: 0;
-					font-size: 16px;
-					@include truncate();
-				}
-				small{
-					font-size: 16px;
-				}
-				img{
-					margin: 10px 0;
-				}
-				article{
-					
-				}
-			}
-			
-		}
-	}
 
 	form{
 		@include grid-row();
@@ -128,3 +155,73 @@ ul.off-canvas-list{
 	padding-bottom: 10px;
 	text-align: center;
 }
+
+.screen-mybooks{
+	@include grid-row();
+
+	header{
+		background: $foxgreen;
+		display: inline-block;
+		width: 100%;
+		color: $white;
+		padding: 10px 0;
+		margin-bottom: 20px; 
+
+		h3{
+			@include grid-column(8);
+			margin: 0;
+			color: $white;
+			@include open-sans();
+			font-weight: 700;
+		}
+		span{
+			@include grid-column(4);
+			@include open-sans();
+			padding-top:5px;
+			text-align: right;
+		}
+	}
+
+	.profile{
+		display: inline-block;
+		width: 100%; 
+		padding: 20px 0;
+
+		header{
+			
+		}
+
+		.figure{
+			@include grid-column(5);
+		}
+		article{
+			@include grid-column(7);
+			h3{
+				@include open-sans();
+				span{
+					font-weight: 700;
+				}
+			}
+		}
+	}
+}
+
+.screen-around{
+	header{
+		background: $foxgreen;
+		display: inline-block;
+		width: 100%;
+		color: $white;
+		padding: 10px 0;
+		margin-bottom: 20px; 
+
+		h3{
+			@include grid-column(12);
+			margin: 0;
+			color: $white;
+			@include open-sans();
+			font-weight: 700;
+		}
+	}
+}
+
