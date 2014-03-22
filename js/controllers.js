@@ -147,50 +147,6 @@ myApp.
 
 
 
-myApp.
-    controller('GeoTestCtrl', ['$scope', '$window'
-,function ($scope, $window) {
-    console.log($window);
-    $scope.supportsGeo = $window.navigator;
-    $scope.position = null;
-    $scope.test='testdddddddd';
-
-
-     //window.setTimeout($scope.getCurrentPosition, 1);
-    // (function () {
-    //     console.log("getCurrentPosition");
-    //     window.navigator.geolocation.getCurrentPosition(function(position) {
-    //         $scope.$apply(function() {
-    //             $scope.position = position;
-    //         });
-    //     }, function(error) {
-    //         alert(error);
-    //     });
-    // }());
-
-    $scope.doTest1 = function() {
-        window.navigator.geolocation.getCurrentPosition(function(position) {
-            $scope.$apply(function() {
-                $scope.position = position;
-            });
-        }, function(error) {
-            alert(error);
-        });
-    };
-    $scope.doTest2 = function() {
-        $window.navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(position);
-            $scope.$apply(function() {
-                $scope.position = position;
-            });
-        }, function(error) {
-            alert(error);
-        });
-    };
-
-}]);
-
-
   myApp.controller('mainCtrl', [ '$scope','UserService','geolocation','UserInteractionService',function ($scope,UserService,geolocation,UserInteractionService) {
     $scope.coords = geolocation.getLocation().then(function(data){
         console.log(data);

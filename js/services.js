@@ -43,7 +43,7 @@ myApp.factory('UserInteractionService', ['$http','UserService',
 
 	
 return $http({
-    url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
+    url: 'http://thesmartfoxies.cloudapp.net/api/User',
     dataType: 'json',
     method: 'POST',
     data: { 
@@ -62,7 +62,7 @@ return $http({
 
 	
 return $http({
-    url: 'http://127.0.0.1:81/api/UserNearby',
+    url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
     dataType: 'json',
     method: 'POST',
     data: { 
