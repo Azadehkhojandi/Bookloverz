@@ -107,7 +107,10 @@
 			        <button type="button" ng-click="test()">My Books</button>
 			        <div ng-repeat="bookshelve in bookshelves.items">
 			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
-				            <h3 class="">{{bookshelve.title}}</h3>          
+				            <header>
+					            <h3 class="">{{bookshelve.title}}</h3> 
+					            <span>{{bookshelve.volumeCount}}</span>
+				            </header>          
 			                <div ng-repeat="volume in bookshelve.volumes.items">
 			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
 			                	<!--
@@ -117,8 +120,10 @@
 		                </div>	                
 			        </div>
 			        <div ng-repeat="bookshelve in bookshelves.items">
-			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
-				            <h3 class="">{{bookshelve.title}}</h3>          
+			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">									            <header>
+					            <h3 class="">{{bookshelve.title}}</h3> 
+					            <span>{{bookshelve.volumeCount}}</span>
+				            </header>        
 			                <div ng-repeat="volume in bookshelve.volumes.items">
 			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
 			                	<!--
