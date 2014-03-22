@@ -68,32 +68,13 @@
 
             <section class="main-section">
 
+                <!-- START: HOME NOT LOGGED IN -->
                 <div class="screen-home">
                     <img src="img/logo-foxies.gif">
                     <h2>the smart foxies</h2>
                 </div>
                 <div class="screen-connect">
                     <div google-connect=""></div>
-                </div>
-                
-                <div class="screen-around">
-                    <div ng-controller="AroundMe">
-                        <header>
-                            <h3 class="">Smart foxies around me</h3> 
-                        </header>  
-                        <ul class="list list-people">  
-                    	   <li ng-repeat="person in people">
-                                <a href="">
-                                    <div class="person">
-                                        <img ng-src="{{person.image}}">
-                                    </div>
-                                    <div class="book">
-                                        <img ng-src="{{person.volumeInfo.imageLinks.smallThumbnail}}">
-                                    </div>
-                                </a>
-                    		</li>
-                    	</ul>
-                    </div>
                 </div>
                 
                 <div class="screen-search">
@@ -126,13 +107,54 @@
                     <p>Go to the smart foxies search and search for the book if you could catch the name. If not, doesn't matter: Sign up to the smart foxies and see books that get read around you. RIGHT NOW! Oh, right, there it is. It's the latest Stephen King and it's Sam, who's reading it! Wonder if it's awesome?</p>
                     <p>Ask Sam, we got a messaging service between members. The best thing: IT'S ALL FOR FREE!</p>
                 </div>
-                <div class="screen-about">
+                <div class="screen-what screen-about">
                     <h1>Say who?</h1>
                     
                 </div>
+                <!-- END: HOME NOT LOGGED IN -->
 
 
+                <!-- START: HOME LOGGED IN -->
+                <div class="screen-bookoftheday">
+                    <header>
+                        <h3 class="">Book of the day</h3> 
+                        <p>3 people around you are currently reading</p>
+                    </header> 
+                    <article>
+                        
+                        <div class="book">
+                            <a href="">
+                                <h4 class="">Einmal Sydney und zurueck</h4>
+                                <small>
+                                    <span>Katrin Schmidt</span>
+                                </small>
+                                <img src="img/bookoftheday.jpg" width="200"/>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="screen-around">
+                    <div ng-controller="AroundMe">
+                        <header>
+                            <h3 class="">Smart foxies around me</h3> 
+                        </header>  
+                        <ul class="list list-people">  
+                           <li ng-repeat="person in people">
+                                <a href="">
+                                    <div class="person">
+                                        <img ng-src="{{person.image}}">
+                                    </div>
+                                    <div class="book">
+                                        <img ng-src="{{person.volumeInfo.imageLinks.smallThumbnail}}">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END: HOME LOGGED IN -->
 
+                <!-- START: PROFILE -->
                 <div class="screen-mybooks">
                     <div ng-controller="GoogleUserProfileCtrl">
                         <div class="profile">
@@ -197,7 +219,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- END: PROFILE -->
 
 			</div>
 
