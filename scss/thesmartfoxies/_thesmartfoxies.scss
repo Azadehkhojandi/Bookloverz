@@ -1,10 +1,30 @@
+
 body{
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
+	@include open-sans();
+	font-size: 18px;
 }
 
+button{
+	background-color: $foxorange;
+
+	&:hover{
+		background-color: $foxgreen;
+	}
+}
+
+
+
 h1{
-	font-weight: 800;
+	@include foxies();
+	font-weight: normal;
+	background: url(../img/line.gif) no-repeat center bottom;
+	margin: 0 0 20px 0;
+}
+
+h2{
+	@include foxies();
+	font-weight: normal;
+	color: $white; 
 }
 
 section{
@@ -13,20 +33,44 @@ section{
 	}
 }
 
+ul.off-canvas-list{
+	li {
+		label{
+
+		}
+		a{
+			text-transform: uppercase;
+			font-size: 22px;
+		}
+	}	
+} 
 
 .screen-home{
 	@include grid-column(12);
+	background: $foxgreen;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
 }
 
 .screen-connect{
 	@include grid-column(12);
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
 }
 
 .screen-search{
 	@include grid-column(12);
+
+	form{
+		
+	}
 }
 
 .screen-what{
 	@include grid-column(12);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
 }

@@ -1,0 +1,13 @@
+
+$foxorange:					#eb8913;
+$foxgreen:					#17A697;
+$white:							#FFFFFF;
+
+@mixin open-sans() {
+  font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
+}
+
+@mixin foxies() {
+  font-family: 'Courgette', cursive;
+}
