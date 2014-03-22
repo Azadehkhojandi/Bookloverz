@@ -3,25 +3,65 @@
 myApp.controller('AroundMe', ['$scope', function ($scope) {
 	$scope.people = [
 		{
-			displayName: 'Mr A',
-			image: 'http://',
+			displayName: 'Allison Jones',
+			image: '/fake-img/Avatars/avatar0.png',
 			volumeInfo : {
 				imageLinks: {
-					smallThumbnail: 'http://'
+					smallThumbnail: '/fake-img/Books/00.jpg'
 				},
 				title: "Bla"
 			}
 		},
 		{
-			displayName: 'MrB',
-			image: 'http://',
+			displayName: 'Geoffrey Smith',
+			image: '/fake-img/Avatars/avatar1.png',
 			volumeInfo : {
 				imageLinks: {
-					smallThumbnail: 'http://'
+					smallThumbnail: '/fake-img/Books/01.jpg'
 				},
 				title: "Bla"
 			}
-		} 
+		},
+		{
+			displayName: 'Mary Foo',
+			image: '/fake-img/Avatars/avatar2.png',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: '/fake-img/Books/02.jpg'
+				},
+				title: "Bla"
+			}
+		},
+		{
+			displayName: 'Linus Bar',
+			image: '/fake-img/Avatars/avatar3.png',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: '/fake-img/Books/03.jpg'
+				},
+				title: "Bla"
+			}
+		},
+		{
+			displayName: 'Freddie Blercury',
+			image: '/fake-img/Avatars/avatar4.png',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: '/fake-img/Books/04.jpg'
+				},
+				title: "Bla"
+			}
+		},
+		{
+			displayName: 'John Q Digest',
+			image: '/fake-img/Avatars/avatar5.png',
+			volumeInfo : {
+				imageLinks: {
+					smallThumbnail: '/fake-img/Books/05.jpg'
+				},
+				title: "Bla"
+			}
+		}     
 	];
 }]);
 
