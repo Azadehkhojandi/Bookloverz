@@ -77,6 +77,38 @@ ul.off-canvas-list{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-top: 1px dashed $foxgreen;
+	border-bottom: 1px dashed $foxgreen;
+
+	ul.search-results{
+		@include grid-row();
+		margin: 0;
+
+		li{
+			@include grid-column(6);
+			list-style-type: none;
+			height: 280px;
+
+			a{
+				color: $standard;
+
+				h4{
+					margin: 0;
+					font-size: 16px;
+					@include truncate();
+				}
+				small{
+					font-size: 16px;
+				}
+				img{
+					margin: 10px 0;
+				}
+				article{
+					
+				}
+			}
+			
+		}
+	}
 
 	form{
 		@include grid-row();

@@ -2,6 +2,7 @@
 $foxorange:					#eb8913;
 $foxgreen:					#17A697;
 $white:							#FFFFFF;
+$standard:					#222222;
 
 @mixin open-sans() {
   font-family: 'Open Sans Condensed', sans-serif;
@@ -10,4 +11,11 @@ $white:							#FFFFFF;
 
 @mixin foxies() {
   font-family: 'Courgette', cursive;
+}
+
+@mixin truncate($w:100%) {
+  width: $w;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

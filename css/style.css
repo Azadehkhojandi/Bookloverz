@@ -6424,7 +6424,42 @@ ul.off-canvas-list li a {
   float: left;
   padding-top: 20px;
   padding-bottom: 20px;
-  border-top: 1px dashed #17a697; }
+  border-top: 1px dashed #17a697;
+  border-bottom: 1px dashed #17a697; }
+  .screen-search ul.search-results {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 62.5rem;
+    *zoom: 1;
+    margin: 0; }
+    .screen-search ul.search-results:before, .screen-search ul.search-results:after {
+      content: " ";
+      display: table; }
+    .screen-search ul.search-results:after {
+      clear: both; }
+    .screen-search ul.search-results li {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem;
+      width: 50%;
+      float: left;
+      list-style-type: none;
+      height: 280px; }
+      .screen-search ul.search-results li a {
+        color: #222222; }
+        .screen-search ul.search-results li a h4 {
+          margin: 0;
+          font-size: 16px;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+        .screen-search ul.search-results li a small {
+          font-size: 16px; }
+        .screen-search ul.search-results li a img {
+          margin: 10px 0; }
   .screen-search form {
     width: 100%;
     margin-left: auto;
