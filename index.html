@@ -106,12 +106,9 @@
 			        <div ng-repeat="bookshelve in bookshelves.items">		
 				            <h3 class="">{{bookshelve.title}}</h3>          
 			                <div ng-repeat="volume in bookshelve.volumes.items">
-			
-			                    
-			                    <img ng-src="{{volume.volumeInfo.thumbnail}}"/>
+			                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/>
 			                    <p class="">{{volume.volumeInfo.description}}</p>       
 			                    <h3 class="">{{volume.volumeInfo.title}}</h3>
-			
 			                </div>
 			        	</div>
 			        </div>
