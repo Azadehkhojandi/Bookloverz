@@ -90,8 +90,16 @@ ul.list{
 					
 				}
 			}
-			
 		}
+
+	&.list-people{
+		.person,
+		.book{
+			width:50%;
+			float: left;
+		}
+	}	
+
 }
 
 ul.off-canvas-list{
@@ -128,9 +136,6 @@ ul.off-canvas-list{
 	border-top: 1px dashed $foxgreen;
 	border-bottom: 1px dashed $foxgreen;
 
-	ul.list-search-results{
-		margin: 0;
-	}
 
 	form{
 		@include grid-row();
@@ -197,6 +202,25 @@ ul.off-canvas-list{
 					font-weight: 700;
 				}
 			}
+		}
+	}
+}
+
+.screen-around{
+	header{
+		background: $foxgreen;
+		display: inline-block;
+		width: 100%;
+		color: $white;
+		padding: 10px 0;
+		margin-bottom: 20px; 
+
+		h3{
+			@include grid-column(12);
+			margin: 0;
+			color: $white;
+			@include open-sans();
+			font-weight: 700;
 		}
 	}
 }

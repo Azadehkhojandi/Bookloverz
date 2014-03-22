@@ -72,16 +72,24 @@
                     <div google-connect=""></div>
                 </div>
                 
-                <div ng-controller="AroundMe">
-                	<h3>Around Me</h3>
-                	<ul>
-                		<li ng-repeat="person in people">
-	                		<!--
-	                		<img ng-src="{{person.image}}">
-	                		<img ng-src="{{person.volumneInfo.imageLinks.thumbnail}}">
-	                		-->
-                		</li>
-                	</ul>
+                <div class="screen-around">
+                    <div ng-controller="AroundMe">
+                        <header>
+                            <h3 class="">Smart foxies around me</h3> 
+                        </header>  
+                        <ul class="list list-people">  
+                    	   <li ng-repeat="person in people">
+                                <a href="">
+                                    <div class="person">
+                                        <img ng-src="{{person.image}}">
+                                    </div>
+                                    <div class="book">
+                                        <img ng-src="{{person.volumneInfo.imageLinks.thumbnail}}">
+                                    </div>
+                                </a>
+                    		</li>
+                    	</ul>
+                    </div>
                 </div>
                 
                 <div class="screen-search">
