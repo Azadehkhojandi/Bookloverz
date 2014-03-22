@@ -1,10 +1,42 @@
+
 body{
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
+	@include open-sans();
+	font-size: 18px;
 }
 
+button,
+.button{
+	background-color: $foxorange;
+	margin:0;
+
+	&:hover{
+		background-color: $foxgreen;
+	}
+
+	&.button-search{
+		padding: 8px 0;
+	}
+}
+
+
+
 h1{
-	font-weight: 800;
+	@include foxies();
+	font-weight: normal;
+	background: url(../img/line.gif) no-repeat center bottom;
+	margin: 0 0 20px 0;
+}
+
+h2{
+	@include foxies();
+	font-weight: normal;
+	color: $white; 
+}
+
+h3{
+	@include foxies();
+	font-weight: normal;
+	font-size: 20px; 
 }
 
 section{
@@ -13,20 +45,86 @@ section{
 	}
 }
 
+ul.off-canvas-list{
+	li {
+		label{
+
+		}
+		a{
+			text-transform: uppercase;
+			font-size: 22px;
+		}
+	}	
+} 
 
 .screen-home{
 	@include grid-column(12);
+	background: $foxgreen;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
 }
 
 .screen-connect{
 	@include grid-column(12);
+	padding-top: 30px;
+	padding-bottom: 30px;
 	text-align: center;
 }
 
 .screen-search{
 	@include grid-column(12);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-top: 1px dashed $foxgreen;
+	border-bottom: 1px dashed $foxgreen;
+
+	ul.search-results{
+		@include grid-row();
+		margin: 0;
+
+		li{
+			@include grid-column(6);
+			list-style-type: none;
+			height: 280px;
+
+			a{
+				color: $standard;
+
+				h4{
+					margin: 0;
+					font-size: 16px;
+					@include truncate();
+				}
+				small{
+					font-size: 16px;
+				}
+				img{
+					margin: 10px 0;
+				}
+				article{
+					
+				}
+			}
+			
+		}
+	}
+
+	form{
+		@include grid-row();
+
+		.input-search{
+			@include grid-column(8);
+		}
+		.button-search{
+			@include grid-column(4);
+		}
+	}
 }
 
 .screen-what{
 	@include grid-column(12);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
 }

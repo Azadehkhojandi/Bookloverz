@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>the smart foxies</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/style.css" />
     
@@ -33,7 +33,7 @@
                     <a class="left-off-canvas-toggle menu-icon" ><span></span></a> 
                 </section> 
                 <section class="middle tab-bar-section"> 
-                    <h1 class="title">the smart foxies</h1> 
+                    <h1 class="title"></h1> 
                 </section> 
                 <section class="right-small"> 
                     <a class="right-off-canvas-toggle menu-icon" ><span></span></a> 
@@ -67,29 +67,33 @@
             <section class="main-section">
 
                 <div class="screen-home">
-                    <!-- Foxy image -->
+                    <img src="img/logo-foxies.gif">
+                    <h2>the smart foxies</h2>
                 </div>
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
                 <div class="screen-search">
+                    
                     <div ng-controller="SearchCtrl">
-                        <div ng-repeat="book in books.items">
-                            <h3 class="">{{book.volumeInfo.title}}</h3>
-                            <p class="">{{book.volumeInfo.description}}</p>
-                            <p>
-                                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
-                            </p>
-                            <ul class="">
-                                <li ng-repeat="author in book.volumeInfo.authors">
-                                    <span>{{author}}</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="search-results">
+                            <li ng-repeat="book in books.items">
+                                <a href="">
+                                    <h4 class="">{{book.volumeInfo.title}}</h4>
+                                    <small ng-repeat="author in book.volumeInfo.authors">
+                                        <span>{{author}}</span>
+                                    </small>
+                                    <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+                                    <!-- <article>
+                                        {{book.volumeInfo.description}}
+                                    </article> -->
+                                </a>
+                            </li>
+                        </ul>
                         <form ng-submit="search()">
-                            <input type="text" ng-model="keyword" size="30" placeholder="Search for a book">
-                            <select ng-model="term" ng-options="obj.value as obj.text for obj in terms"></select>
-                            <input class="" type="submit" value="search">
+                            <h3>Start with searching for a book?</h3>
+                            <input class="input-search" type="text" ng-model="keyword" placeholder="e.g. The Bookthief">
+                            <input class="button button-search" type="submit" value="go">
                         </form>
                     </div>
                 </div>
@@ -102,27 +106,32 @@
 
 
 			    <div ng-controller="GoogleUserProfileCtrl">
-			
-			        <button type="button" ng-click="test()">test</button>
+			        <button type="button" ng-click="test()">My Books</button>
 			        <div ng-repeat="bookshelve in bookshelves.items">
-			
-			
-			            <h3 class="">{{bookshelve.title}}</h3>
-			            <p class="">{{bookshelve.volumeCount}}</p>           
-			                <div ng-repeat="volume in bookshelve.volumes">
-			
-			                    <h3 class="">{{bookshelve.title}}</h3>
-			                    <img ng-src="{{bookshelve.imageLinks.thumbnail}}"/>
-			                    <p class="">{{bookshelve.description}}</p>           
-			
+			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
+				            <h3 class="">{{bookshelve.title}}</h3>          
+			                <div ng-repeat="volume in bookshelve.volumes.items">
+			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
+			                	<!--
+			                    <p class="">{{volume.volumeInfo.description}}</p>  
+			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
 			                </div>
+		                </div>	                
 			        </div>
-			
+			        <div ng-repeat="bookshelve in bookshelves.items">
+			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
+				            <h3 class="">{{bookshelve.title}}</h3>          
+			                <div ng-repeat="volume in bookshelve.volumes.items">
+			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
+			                	<!--
+			                    <p class="">{{volume.volumeInfo.description}}</p>  
+			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
+			                </div>
+		                </div>	
+			        </div>
 			    </div>
 
 			</div>
-
-
 
             </section> 
 
