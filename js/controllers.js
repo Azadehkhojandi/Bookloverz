@@ -125,6 +125,7 @@ myApp.
     controller('GoogleUserProfileCtrl', [
         '$scope', '$http','UserService', function ($scope, $http,UserService) {
           
+        $scope.profile=UserService.profile;
           $scope.bookshelves={
             items:{}
           };
