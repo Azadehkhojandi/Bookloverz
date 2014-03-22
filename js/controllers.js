@@ -3,21 +3,21 @@
 myApp.controller('AroundMe', ['$scope', function ($scope) {
 	$scope.people = [
 		{
-			displayName: 'Mr A',
-			image: 'http://',
+			displayName: 'Allison Jones',
+			image: '/fake-img/Avatars/avatar0.png',
 			volumeInfo : {
 				imageLinks: {
-					smallThumbnail: 'http://'
+					smallThumbnail: '/fake-img/Books/00.jpg'
 				},
 				title: "Bla"
 			}
 		},
 		{
-			displayName: 'MrB',
-			image: 'http://',
+			displayName: 'Geoffrey Smith',
+			image: '/fake-img/Avatars/avatar0.png',
 			volumeInfo : {
 				imageLinks: {
-					smallThumbnail: 'http://'
+					smallThumbnail: '/fake-img/Books/01.jpg'
 				},
 				title: "Bla"
 			}
