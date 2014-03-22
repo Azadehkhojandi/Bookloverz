@@ -4,11 +4,17 @@ body{
 	font-size: 18px;
 }
 
-button{
+button,
+.button{
 	background-color: $foxorange;
+	margin:0;
 
 	&:hover{
 		background-color: $foxgreen;
+	}
+
+	&.button-search{
+		padding: 8px 0;
 	}
 }
 
@@ -25,6 +31,12 @@ h2{
 	@include foxies();
 	font-weight: normal;
 	color: $white; 
+}
+
+h3{
+	@include foxies();
+	font-weight: normal;
+	font-size: 20px; 
 }
 
 section{
@@ -55,16 +67,26 @@ ul.off-canvas-list{
 
 .screen-connect{
 	@include grid-column(12);
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	text-align: center;
 }
 
 .screen-search{
 	@include grid-column(12);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-top: 1px dashed $foxgreen;
 
 	form{
-		
+		@include grid-row();
+
+		.input-search{
+			@include grid-column(8);
+		}
+		.button-search{
+			@include grid-column(4);
+		}
 	}
 }
 
