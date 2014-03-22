@@ -28,6 +28,15 @@ button,
 	text-align: center;
 }
 
+.tab-bar .menu-icon{
+	&.right-off-canvas-toggle{
+		background: url(../img/envelope.png) no-repeat 7px 10px;
+		span{
+			display: none;
+		}
+	}
+}
+
 h1{
 	@include foxies();
 	font-weight: normal;

@@ -6375,6 +6375,11 @@ button,
   float: left;
   text-align: center; }
 
+.tab-bar .menu-icon.right-off-canvas-toggle {
+  background: url(../img/envelope.png) no-repeat 7px 10px; }
+  .tab-bar .menu-icon.right-off-canvas-toggle span {
+    display: none; }
+
 h1 {
   font-family: 'Courgette', cursive;
   font-weight: normal;
