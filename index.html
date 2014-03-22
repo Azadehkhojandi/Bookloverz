@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>the smart foxies</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/style.css" />
     
@@ -32,7 +32,7 @@
                     <a class="left-off-canvas-toggle menu-icon" ><span></span></a> 
                 </section> 
                 <section class="middle tab-bar-section"> 
-                    <h1 class="title">the smart foxies</h1> 
+                    <h1 class="title"></h1> 
                 </section> 
                 <section class="right-small"> 
                     <a class="right-off-canvas-toggle menu-icon" ><span></span></a> 
@@ -65,7 +65,8 @@
 
             <section class="main-section">
                 <div class="screen-home">
-                    <!-- Foxy image -->
+                    <img src="img/logo-foxies.gif" />
+                    <h2>the smart foxies</h2>
                 </div>
                 <div class="screen-connect">
                     <div google-connect=""></div>
@@ -85,17 +86,18 @@
                             </ul>
                         </div>
                         <form ng-submit="search()">
-                            <input type="text" ng-model="keyword" size="30" placeholder="Search for a book">
-                            <select ng-model="term" ng-options="obj.value as obj.text for obj in terms"></select>
-                            <input class="" type="submit" value="search">
+                            <h3>Start with searching for a book?</h3>
+                            <input class="input-search" type="text" ng-model="keyword" placeholder="e.g. The Bookthief">
+                            <!-- <select ng-model="term" ng-options="obj.value as obj.text for obj in terms"></select> -->
+                            <input class="button button-search" type="submit" value="go">
                         </form>
                     </div>
                 </div>
                 <div class="screen-what">
                     <h1>Say what?</h1>
-                    <p>Travelling on public transport can be so dull, right? You starr out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
-                    <p>Go to the smart foxies search and search for the book if you could catch the name. If not, doesn't matter: Sign up to the smart foxies and see books that get read around you. RIGHT NOW! Oh, right, there it is. It's the latest Stephen King and it's Sam, who's reading it! Wonder if it's awesome?</p>
-                    <p>Ask Sam, we got a messaging service between members. The best thing: IT'S ALL FOR FREE!</p>
+                    <p>Travelling on public transport can be so dull, right? You starr out of the window and suddenly someone walks by with an awesome book in their hands.</p><p><strong>You wanna know what it is! NOW!</strong></p>
+                    <p>Go to the smart foxies search and search for the book if you could catch the name. If not, doesn't matter: <strong>Sign up to the smart foxies and see books that get read around you. RIGHT NOW!</strong>  Oh, right, there it is. It's the latest Stephen King and it's Sam, who's reading it! Wonder if it's awesome?</p>
+                    <p>Ask Sam, we got a messaging service between members. The best thing: <strong>IT'S ALL FOR FREE!</strong></p>
                 </div>
 
 

@@ -6349,11 +6349,36 @@ th.hide-for-touch {
   display: table-cell !important; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400; }
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 18px; }
+
+button,
+.button {
+  background-color: #eb8913;
+  margin: 0; }
+  button:hover,
+  .button:hover {
+    background-color: #17a697; }
+  button.button-search,
+  .button.button-search {
+    padding: 8px 0; }
 
 h1 {
-  font-weight: 800; }
+  font-family: 'Courgette', cursive;
+  font-weight: normal;
+  background: url(../img/line.gif) no-repeat center bottom;
+  margin: 0 0 20px 0; }
+
+h2 {
+  font-family: 'Courgette', cursive;
+  font-weight: normal;
+  color: white; }
+
+h3 {
+  font-family: 'Courgette', cursive;
+  font-weight: normal;
+  font-size: 20px; }
 
 section.main-section {
   width: 100%;
@@ -6369,27 +6394,66 @@ section.main-section {
   section.main-section:after {
     clear: both; }
 
+ul.off-canvas-list li a {
+  text-transform: uppercase;
+  font-size: 22px; }
+
 .screen-home {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;
-  float: left; }
+  float: left;
+  background: #17a697;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center; }
 
 .screen-connect {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;
   float: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
   text-align: center; }
 
 .screen-search {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;
-  float: left; }
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dashed #17a697; }
+  .screen-search form {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 62.5rem;
+    *zoom: 1; }
+    .screen-search form:before, .screen-search form:after {
+      content: " ";
+      display: table; }
+    .screen-search form:after {
+      clear: both; }
+    .screen-search form .input-search {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem;
+      width: 66.66667%;
+      float: left; }
+    .screen-search form .button-search {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem;
+      width: 33.33333%;
+      float: left; }
 
 .screen-what {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;
-  float: left; }
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center; }
