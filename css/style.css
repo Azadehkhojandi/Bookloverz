@@ -6445,10 +6445,19 @@ ul.list {
         font-size: 16px; }
       ul.list li a img {
         margin: 10px 0; }
-  ul.list.list-people .person,
-  ul.list.list-people .book {
-    width: 50%;
-    float: left; }
+  ul.list.list-people li {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    ul.list.list-people li .person,
+    ul.list.list-people li .book {
+      width: 50%;
+      float: left;
+      height: 94px;
+      overflow: hidden; }
+      ul.list.list-people li .person img,
+      ul.list.list-people li .book img {
+        margin: 0; }
 
 ul.off-canvas-list li a {
   text-transform: uppercase;

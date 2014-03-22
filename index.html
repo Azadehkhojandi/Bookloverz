@@ -13,14 +13,17 @@
 
     <script src="js/foundation/vendor/modernizr.js"></script>
 
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
     <script src="/js/directives.js"></script>
     <script src="/js/services.js"></script>
     <script src="https://apis.google.com/js/client.js"></script>
+    
+    <script src="https://rawgithub.com/arunisrael/angularjs-geolocation/master/dist/angularjs-geolocation.min.js"></script>
+    
 </head>
 
 <body>
@@ -142,7 +145,7 @@
                                         <img ng-src="{{person.image}}">
                                     </div>
                                     <div class="book">
-                                        <img ng-src="{{person.volumneInfo.imageLinks.thumbnail}}">
+                                        <img ng-src="{{person.volumeInfo.imageLinks.smallThumbnail}}">
                                     </div>
                                 </a>
                             </li>
@@ -229,17 +232,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
    
     <div id="content"></div>
     
@@ -247,6 +239,10 @@
     <script src="js/foundation/vendor/foundation.min.js"></script>
     <script src="js/foundation/app.js"></script>
 
+
+<div ng-controller="mainCtrl">
+      
+    </div>
 </body>
 
 </html>

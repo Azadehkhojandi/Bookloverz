@@ -3,8 +3,8 @@
 /* Directives */
 
 
-myApp.directive('googleConnect', ['UserService',
-    function (UserService) {
+myApp.directive('googleConnect', ['UserService','UserInteractionService',
+    function (UserService,UserInteractionService) {
         return {
             restrict: 'A',
             scope: {},
@@ -22,14 +22,14 @@ myApp.directive('googleConnect', ['UserService',
                 // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
                 // In your Developer Console project, add a JavaScript origin that corresponds to the domain
                 // where you will be running the script.
-                scope.clientId = '458058919748-lr1blgl6cgv1r70d3qhralql0ot59917.apps.googleusercontent.com';
+                scope.clientId = '728809409719-f6u3ub15ntosdqkkdg908ahm0f72d9qg.apps.googleusercontent.com';
 
                 // Enter the API key from the Google Develoepr Console - to handle any unauthenticated
                 // requests in the code.
                 // The provided key works for this sample only when run from
                 // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
                 // To use in your own application, replace this API key with your own.
-                scope.apiKey = 'AIzaSyAyclfZKwub-ogDQ9SBFlZvbZK2gtr81nc';
+                scope.apiKey = 'AIzaSyDs6vaRX_I0uiafVA9SUj88jNdzR5qy5zg';
 
                 // To enter one or more authentication scopes, refer to the documentation for the API.
                 scope.scopes = 'https://www.googleapis.com/auth/plus.me profile email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/books';
@@ -78,17 +78,26 @@ myApp.directive('googleConnect', ['UserService',
                             'userId': 'me'
                         });
                         request.execute(function (resp) {
+                            
                             if(resp.image.url>0 && resp.image.url.length>0)
                             {
                             scope.profile.image = resp.image.url;
                             }
                             scope.profile.displayName=resp.displayName;                          
                             UserService.profile=scope.profile;
+                            UserInteractionService.postUserInfo().success(handleSuccess);
                             scope.$apply();
                         });
                     });
                 };
+                var handleSuccess = function(data, status) {
+                    
+                    console.log('handleSuccess');
+                    console.log(data);
+                    console.log(status);
+                };
 
+                
                 scope.$watch('gapiStatus', function () {
                     console.log('watch gapiStatus');
                     if (scope.gapiStatus()) {

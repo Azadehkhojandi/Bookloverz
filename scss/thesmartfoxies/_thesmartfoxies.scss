@@ -93,11 +93,23 @@ ul.list{
 		}
 
 	&.list-people{
-		.person,
-		.book{
-			width:50%;
-			float: left;
+		li{
+			height: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.person,
+			.book{
+				width:50%;
+				float: left;
+				height: 94px;
+				overflow: hidden;
+
+				img{ 
+					margin: 0; 
+				}
+			}
 		}
+		
 	}	
 
 }
