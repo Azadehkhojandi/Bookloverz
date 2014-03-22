@@ -129,6 +129,7 @@ myApp.
     controller('GoogleUserProfileCtrl', [
         '$rootScope', '$scope', '$http','UserService', function ($rootScope, $scope, $http,UserService) {
           
+        $scope.profile=UserService.profile;
           $scope.bookshelves={
             items:{}
           };
@@ -195,5 +196,30 @@ myApp.
             };
         }
     ]);
+
+
+
+
+  myApp.controller('mainCtrl', [ '$scope','UserService','geolocation','UserInteractionService',function ($scope,UserService,geolocation,UserInteractionService) {
+    $scope.coords = geolocation.getLocation().then(function(data){
+        console.log(data);
+        
+        UserService.lat=data.coords.latitude;
+        UserService.long=data.coords.longitude;
+        
+        UserInteractionService.postUserLoc().success(
+         function(data, status) {
+                    
+                    console.log('handleSuccess');
+                    console.log(data);
+                    console.log(status);
+                });
+
+      return {
+        lat:data.coords.latitude, 
+        long:data.coords.longitude};
+    });
+
+}]);
 
 

@@ -9,10 +9,76 @@
 //   value('version', '0.1');
 
 
-myApp.factory('UserService', function() {
+myApp.factory('UserService', ['$http',
+    function ($http) {
   return {
       profile : {},
       access_token:'',
+      lat:0,
+      long:0,
+      postUserInfo: function() {
 
-  };
-});
+	
+return $http({
+    url: 'http://thesmartfoxies.cloudapp.net/api/user',
+    dataType: 'json',
+    method: 'POST',
+    data: { 
+                name : profile.name,
+                email    : profile.email
+            },
+    headers: {
+        "Content-Type": "application/json"
+  
+  }
+})}}}]);
+
+
+myApp.factory('UserInteractionService', ['$http','UserService',
+    function ($http,UserService) {
+  return {
+     
+
+      postUserInfo: function() {
+
+	
+return $http({
+    url: 'http://thesmartfoxies.cloudapp.net/api/User',
+    dataType: 'json',
+    method: 'POST',
+    data: { 
+                name : UserService.profile.name,
+                email : UserService.profile.email,
+                lat:UserService.lat,
+                long:UserService.long
+
+            },
+    headers: {
+        "Content-Type": "application/json"
+  
+  }
+})},
+   postUserLoc: function() {
+
+	
+return $http({
+    url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
+    dataType: 'json',
+    method: 'POST',
+    data: { 
+                name : UserService.profile.name,
+                email : UserService.profile.email,
+                lat:UserService.lat,
+                long:UserService.long
+
+            },
+    headers: {
+        "Content-Type": "application/json"
+  
+  }
+})}
+
+
+}}]);
+
+

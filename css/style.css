@@ -6445,10 +6445,26 @@ ul.list {
         font-size: 16px; }
       ul.list li a img {
         margin: 10px 0; }
-  ul.list.list-people .person,
-  ul.list.list-people .book {
-    width: 50%;
-    float: left; }
+  ul.list.list-people li {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    ul.list.list-people li .person,
+    ul.list.list-people li .book {
+      width: 50%;
+      float: left;
+      height: 94px;
+      overflow: hidden; }
+      ul.list.list-people li .person img,
+      ul.list.list-people li .book img {
+        margin: 0; }
+  ul.list.list-us li {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left;
+    list-style-type: none;
+    height: auto; }
 
 ul.off-canvas-list li a {
   text-transform: uppercase;
@@ -6574,14 +6590,16 @@ ul.off-canvas-list li a {
         .screen-mybooks .profile article h3 span {
           font-weight: 700; }
 
-.screen-around header {
+.screen-around header,
+.screen-bookoftheday header {
   background: #17a697;
   display: inline-block;
   width: 100%;
   color: white;
   padding: 10px 0;
   margin-bottom: 20px; }
-  .screen-around header h3 {
+  .screen-around header h3,
+  .screen-bookoftheday header h3 {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
     width: 100%;
@@ -6591,3 +6609,40 @@ ul.off-canvas-list li a {
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 300;
     font-weight: 700; }
+  .screen-around header p,
+  .screen-bookoftheday header p {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left;
+    margin: 0; }
+
+.screen-bookoftheday article {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 100%;
+  float: left;
+  text-align: center;
+  margin-bottom: 20px; }
+  .screen-bookoftheday article a {
+    color: #222222; }
+    .screen-bookoftheday article a h4 {
+      margin: 0;
+      font-size: 16px; }
+    .screen-bookoftheday article a small {
+      font-size: 16px;
+      display: block; }
+    .screen-bookoftheday article a img {
+      margin: 10px 0;
+      clear: both; }
+
+.screen-about .figure {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 41.66667%;
+  float: left; }
+.screen-about article {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 58.33333%;
+  float: left; }

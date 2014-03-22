@@ -2,4 +2,5 @@
 
 
 // Declare app level module which depends on filters, and services
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['geolocation']);
+

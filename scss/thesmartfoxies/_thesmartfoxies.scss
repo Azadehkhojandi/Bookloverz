@@ -93,12 +93,32 @@ ul.list{
 		}
 
 	&.list-people{
-		.person,
-		.book{
-			width:50%;
-			float: left;
+		li{
+			height: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.person,
+			.book{
+				width:50%;
+				float: left;
+				height: 94px;
+				overflow: hidden;
+
+				img{ 
+					margin: 0; 
+				}
+			}
 		}
+		
 	}	
+
+	&.list-us{
+		li{
+			@include grid-column(12);
+			list-style-type: none;
+			height: auto;
+		}
+	}
 
 }
 
@@ -206,7 +226,8 @@ ul.off-canvas-list{
 	}
 }
 
-.screen-around{
+.screen-around,
+.screen-bookoftheday{
 	header{
 		background: $foxgreen;
 		display: inline-block;
@@ -222,6 +243,48 @@ ul.off-canvas-list{
 			@include open-sans();
 			font-weight: 700;
 		}
+		p{
+			@include grid-column(12);
+			margin:0;
+		}
 	}
 }
 
+.screen-bookoftheday{
+	article{
+			@include grid-column(12);
+			text-align: center;
+			margin-bottom: 20px;
+
+			a{
+				color: $standard;
+
+				h4{
+					margin: 0;
+					font-size: 16px;
+				}
+				small{
+					font-size: 16px;
+					display: block;
+				}
+				img{
+					margin: 10px 0;
+					clear: both;
+				}
+				article{
+					
+				}
+			}
+	}
+
+}
+
+.screen-about{
+
+	.figure{
+		@include grid-column(5);
+	}
+	article{
+		@include grid-column(7);
+	}
+}
