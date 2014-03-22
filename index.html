@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>the smart foxies</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Courgette|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/style.css" />
     
@@ -65,13 +65,14 @@
 
             <section class="main-section">
                 <div class="screen-home">
-                    <!-- Foxy image -->
+                    <img src="img/logo-foxies.gif">
+                    <h2>the smart foxies</h2>
                 </div>
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
                 <div class="screen-search">
-                    <h3>Start with searching for a book?</h3>
+                    
                     <div ng-controller="SearchCtrl">
                         <ul class="search-results">
                             <li ng-repeat="book in books.items">
@@ -88,6 +89,7 @@
                             </li>
                         </ul>
                         <form ng-submit="search()">
+                            <h3>Start with searching for a book?</h3>
                             <input class="input-search" type="text" ng-model="keyword" placeholder="e.g. The Bookthief">
                             <input class="button button-search" type="submit" value="go">
                         </form>
