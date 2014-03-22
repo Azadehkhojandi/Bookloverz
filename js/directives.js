@@ -3,8 +3,8 @@
 /* Directives */
 
 
-myApp.directive('googleConnect', ['UserService',
-    function (UserService) {
+myApp.directive('googleConnect', ['UserService','UserInteractionService',
+    function (UserService,UserInteractionService) {
         return {
             restrict: 'A',
             scope: {},
@@ -78,17 +78,26 @@ myApp.directive('googleConnect', ['UserService',
                             'userId': 'me'
                         });
                         request.execute(function (resp) {
+                            
                             if(resp.image.url>0 && resp.image.url.length>0)
                             {
                             scope.profile.image = resp.image.url;
                             }
                             scope.profile.displayName=resp.displayName;                          
                             UserService.profile=scope.profile;
+                            UserInteractionService.postUserInfo().success(handleSuccess);
                             scope.$apply();
                         });
                     });
                 };
+                var handleSuccess = function(data, status) {
+                    
+                    console.log('handleSuccess');
+                    console.log(data);
+                    console.log(status);
+                };
 
+                
                 scope.$watch('gapiStatus', function () {
                     console.log('watch gapiStatus');
                     if (scope.gapiStatus()) {
