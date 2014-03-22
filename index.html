@@ -87,7 +87,7 @@
                 <div class="screen-search">
                     
                     <div ng-controller="SearchCtrl">
-                        <ul class="search-results">
+                        <ul class="list list-search-results">
                             <li ng-repeat="book in books.items">
                                 <a href="">
                                     <h4 class="">{{book.volumeInfo.title}}</h4>
@@ -115,43 +115,69 @@
                     <p>Ask Sam, we got a messaging service between members. The best thing: IT'S ALL FOR FREE!</p>
                 </div>
 
+                <div class="screen-mybooks">
+                    <div ng-controller="GoogleUserProfileCtrl">
+                        <button type="button" ng-click="test()">My Books</button>
 
-			    <div ng-controller="GoogleUserProfileCtrl">
-			        <button type="button" ng-click="test()">My Books</button>
-			        <div ng-repeat="bookshelve in bookshelves.items">
-			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
-				            <header>
-					            <h3 class="">{{bookshelve.title}}</h3> 
-					            <span>{{bookshelve.volumeCount}} in total</span>
-				            </header>
-				            <ul>       
-				                <li ng-repeat="volume in bookshelve.volumes.items">
-				                    <h4 class="">{{volume.volumeInfo.title}}</h4>
-                                    <small ng-repeat="author in volume.volumeInfo.authors">
-                                        <span>{{author}}</span>
-                                    </small>
-                                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
-			                    </li>
-			                </ul>
-		                </div>	                
-			        </div>
-			        <div ng-repeat="bookshelve in bookshelves.items">
-			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">									            <header>
-					            <h3 class="">{{bookshelve.title}}</h3> 
-					            <span>{{bookshelve.volumeCount}} in total</span>
-				            </header>  
-				            <ul>      
-				                <li ng-repeat="volume in bookshelve.volumes.items">
-				                    <h4 class="">{{volume.volumeInfo.title}}</h4>
-                                    <small ng-repeat="author in volume.volumeInfo.authors">
-                                        <span>{{author}}</span>
-                                    </small>
-                                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
-				                </li>
-			                <ul>
-		                </div>	
-			        </div>
-			    </div>
+                        <div class="profile">
+                            <header>
+                                <h3 class="">My profile</h3>
+                            </header>
+                            <div class="figure">
+                                <img src="img/profile-pic.jpg">
+                            </div>
+                            <article>
+                                <h3><span>Katrin Schmidt</span>, 31</h3>
+                                <p>A smart foxy that loves, loves books and even has written her own novel.</p>
+                            </article>
+                            <div class="button-container">
+                                <a href="" class="button">Edit profile on google +</a>
+                            </div>
+                        </div>
+
+                        <div ng-repeat="bookshelve in bookshelves.items">
+                            <div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
+                                <header>
+                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <span>{{bookshelve.volumeCount}} in total</span>
+                                </header>
+                                <ul class="list">       
+                                    <li ng-repeat="volume in bookshelve.volumes.items">
+                                        <a href="">
+                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                        <small ng-repeat="author in volume.volumeInfo.authors">
+                                            <span>{{author}}</span>
+                                        </small>
+                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>                  
+                        </div>
+
+                        
+                        <div ng-repeat="bookshelve in bookshelves.items">
+                            <div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">    
+                                <header>
+                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <span>{{bookshelve.volumeCount}} in total</span>
+                                </header>  
+                                <ul class="list">      
+                                    <li ng-repeat="volume in bookshelve.volumes.items">
+                                        <a href="">
+                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                        <small ng-repeat="author in volume.volumeInfo.authors">
+                                            <span>{{author}}</span>
+                                        </small>
+                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                    </a>
+                                    </li>
+                                <ul>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+
 
 			</div>
 
