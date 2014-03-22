@@ -109,27 +109,33 @@
 			        	<div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
 				            <header>
 					            <h3 class="">{{bookshelve.title}}</h3> 
-					            <span>{{bookshelve.volumeCount}}</span>
-				            </header>          
-			                <div ng-repeat="volume in bookshelve.volumes.items">
-			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
-			                	<!--
-			                    <p class="">{{volume.volumeInfo.description}}</p>  
-			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
-			                </div>
+					            <span>{{bookshelve.volumeCount}} in total</span>
+				            </header>
+				            <ul>       
+				                <li ng-repeat="volume in bookshelve.volumes.items">
+				                    <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                    <small ng-repeat="author in volume.volumeInfo.authors">
+                                        <span>{{author}}</span>
+                                    </small>
+                                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+			                    </li>
+			                </ul>
 		                </div>	                
 			        </div>
 			        <div ng-repeat="bookshelve in bookshelves.items">
 			        	<div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">									            <header>
 					            <h3 class="">{{bookshelve.title}}</h3> 
-					            <span>{{bookshelve.volumeCount}}</span>
-				            </header>        
-			                <div ng-repeat="volume in bookshelve.volumes.items">
-			                	<a href="#" style="float: left; margin: 5px; height: 210px; overflow: hidden"><img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}"/></a>
-			                	<!--
-			                    <p class="">{{volume.volumeInfo.description}}</p>  
-			                    <h4 class="">{{volume.volumeInfo.title}}</h3>-->
-			                </div>
+					            <span>{{bookshelve.volumeCount}} in total</span>
+				            </header>  
+				            <ul>      
+				                <li ng-repeat="volume in bookshelve.volumes.items">
+				                    <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                    <small ng-repeat="author in volume.volumeInfo.authors">
+                                        <span>{{author}}</span>
+                                    </small>
+                                    <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+				                </li>
+			                <ul>
 		                </div>	
 			        </div>
 			    </div>
