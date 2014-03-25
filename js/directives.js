@@ -79,18 +79,14 @@ myApp.directive('googleConnect', ['UserService','UserInteractionService',
                         });
                         request.execute(function (resp) {
                             console.log(resp);
-                            if(resp.image.url>0 && resp.image.url.length>0)
-                            {
+                           
                             scope.profile.image = resp.image.url;
-                            }
-
                             scope.profile.email = resp.emails[0].value;
-                            
-                            console.log(scope.profile.email)
+                            scope.profile.displayName=resp.displayName;       
+                            scope.profile.circledByCount=resp.circledByCount;
+                            UserService.UpdateProfile(scope.profile);
 
-                            scope.profile.displayName=resp.displayName;                          
-                            UserService.profile=scope.profile;
-                            UserInteractionService.postUserInfo().success(handleSuccess);
+                            //UserInteractionService.postUserInfo().success(handleSuccess);
                             scope.$apply();
                         });
                     });

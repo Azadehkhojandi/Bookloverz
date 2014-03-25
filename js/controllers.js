@@ -1,6 +1,12 @@
 'use strict';
 
-myApp.controller('AroundMe', ['$scope', function ($scope) {
+myApp.controller('AroundMe', ['$scope','$location','$anchorScroll', function ($scope,$location,$anchorScroll) {
+    $scope.move=function ()
+    {
+$location.hash('profile');
+$anchorScroll();
+
+    };
 	$scope.people = [
 		{
 			displayName: 'Allison Jones',
@@ -126,6 +132,27 @@ myApp.
         '$scope', '$http','UserService', function ($scope, $http,UserService) {
           
         $scope.profile=UserService.profile;
+        $scope.access_token=UserService.access_token;
+        console.log('GoogleUserProfileCtrl');
+        console.log(UserService);
+
+        $scope.$on('profile:updated', function(event,data) {
+             console.log('on-profile:updated');
+             console.log(event);
+             console.log(data);
+             $scope.profile = data;
+             $scope.$apply();
+             console.log($scope.profile);
+             console.log('profile-updated');
+           });
+
+        $scope.$on('accessToken:updated', function(event,data) {
+             console.log('on-accessToken:updated');
+             console.log(event);
+             console.log(data);
+             $scope.access_token = data;
+           });
+
           $scope.bookshelves={
             items:{}
           };
@@ -136,7 +163,7 @@ myApp.
                 console.log('UserService');
 
                // var url = 'https://www.googleapis.com/books/v1/user/' + uid + '/bookshelves/';
-               var url='https://www.googleapis.com/books/v1/mylibrary/bookshelves'+"?access_token="+UserService.access_token;
+               var url='https://www.googleapis.com/books/v1/mylibrary/bookshelves'+"?access_token="+$scope.access_token;
 
                 $http({ method: 'GET', url: url }).
                     success(function (data, status, headers, config) {
@@ -195,13 +222,13 @@ myApp.
         UserService.lat=data.coords.latitude;
         UserService.long=data.coords.longitude;
         
-        UserInteractionService.postUserLoc().success(
-         function(data, status) {
+        // UserInteractionService.postUserLoc().success(
+        //  function(data, status) {
                     
-                    console.log('handleSuccess');
-                    console.log(data);
-                    console.log(status);
-                });
+        //             console.log('handleSuccess');
+        //             console.log(data);
+        //             console.log(status);
+        //         });
 
       return {
         lat:data.coords.latitude, 

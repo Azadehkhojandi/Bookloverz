@@ -140,7 +140,7 @@
                         </header>  
                         <ul class="list list-people">  
                            <li ng-repeat="person in people">
-                                <a href="">
+                                <a href="#screen-mybooks">
                                     <div class="person">
                                         <img ng-src="{{person.image}}">
                                     </div>
@@ -155,20 +155,22 @@
                 <!-- END: HOME LOGGED IN -->
 
                 <!-- START: PROFILE -->
+
                 <div class="screen-mybooks">
                     <div ng-controller="GoogleUserProfileCtrl">
-                        <div class="profile">
+                        <div class="profile" id="profile">
                             <header>
                                 <h3 class="">My profile</h3>
                             </header>
                             <div class="figure">
-                                <img src="img/profile-pic.jpg">
+                                <img ng-src="{{profile.image}}">
+                                
+                                
                             </div>
                             <article>
-                                <h3><span>Katrin Schmidt</span>, 31</h3>
-                                <p>A smart foxy that loves, loves books and even has written her own novel.</p>
-                           <!--      <h3><span>{{scope.profile.displayName}}</span></h3>
-                                <p>{{scope.profile.circledByCount}} have you in circles</p> -->
+                                <h3><span>{{profile.displayName}}</span></h3>
+                                <p>{{profile.circledByCount}} have you in circles</p>
+                               
                             </article>
                             <div class="button-container">
                                 <a href="" class="button" style="margin-top: 15px">Edit profile on google +</a>
@@ -245,6 +247,8 @@
 <div ng-controller="mainCtrl">
       
     </div>
+
+
 </body>
 
 </html>

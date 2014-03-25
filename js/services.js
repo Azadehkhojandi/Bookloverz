@@ -2,36 +2,45 @@
 
 /* Services */
 
+myApp.factory('UserService', [ '$rootScope',
+    function ($rootScope) {
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-// angular.module('myApp.services', []).
-//   value('version', '0.1');
+    var service = {
+          profile : {
+            image:'',
+            email:'',
+            displayName:'',
+            circledByCount:'',
+          },
+          access_token:'',
+          lat:0,
+          long:0,
+    };
 
 
-myApp.factory('UserService', ['$http',
-    function ($http) {
-  return {
-      profile : {},
-      access_token:'',
-      lat:0,
-      long:0,
-      postUserInfo: function() {
+    service.UpdateProfile = function(data) {
+      console.log('UpdateProfile');
+      console.log(data);
+      service.profile=data;
+      $rootScope.$broadcast('profile:updated',data);
+    };
 
-	
-return $http({
-    url: 'http://thesmartfoxies.cloudapp.net/api/user',
-    dataType: 'json',
-    method: 'POST',
-    data: { 
-                name : profile.name,
-                email    : profile.email
-            },
-    headers: {
-        "Content-Type": "application/json"
-  
-  }
-})}}}]);
+    service.UpdateAccessToken = function(data) { 
+     service.access_token=data;
+     $rootScope.$broadcast('accessToken:updated',data);
+   };
+
+   service.UpdateCoordinate = function(data) {
+     service.lat=data.lat;
+     service.long=data.long;
+     $rootScope.$broadcast('coordinate:updated',data);
+   };
+
+
+   return service;
+
+
+}]);
 
 
 myApp.factory('UserInteractionService', ['$http','UserService',
@@ -47,7 +56,7 @@ return $http({
     dataType: 'json',
     method: 'POST',
     data: { 
-                name : UserService.profile.name,
+                name : UserService.profile.displayName,
                 email : UserService.profile.email,
                 lat:UserService.lat,
                 long:UserService.long
@@ -66,7 +75,7 @@ return $http({
     dataType: 'json',
     method: 'POST',
     data: { 
-                name : UserService.profile.name,
+                name : UserService.profile.displayName,
                 email : UserService.profile.email,
                 lat:UserService.lat,
                 long:UserService.long
