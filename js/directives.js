@@ -2,9 +2,8 @@
 
 /* Directives */
 
-
-myApp.directive('googleConnect', ['UserService','UserInteractionService',
-    function (UserService,UserInteractionService) {
+myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionService',
+    function ($rootScope, UserService,UserInteractionService) {
         return {
             restrict: 'A',
             scope: {},
@@ -86,7 +85,15 @@ myApp.directive('googleConnect', ['UserService','UserInteractionService',
                             scope.profile.circledByCount=resp.circledByCount;
                             UserService.UpdateProfile(scope.profile);
 
+<<<<<<< HEAD
                             //UserInteractionService.postUserInfo().success(handleSuccess);
+=======
+                            scope.profile.displayName=resp.displayName;                          
+                            UserService.profile=scope.profile;
+                            
+                            $rootScope.$broadcast('user.updated');
+                            UserInteractionService.postUserInfo().success(handleSuccess);
+>>>>>>> 91db1d5eebe1b27773eb08b1426b731331d11a6a
                             scope.$apply();
                         });
                     });
@@ -101,6 +108,8 @@ myApp.directive('googleConnect', ['UserService','UserInteractionService',
                 
                 scope.$watch('gapiStatus', function () {
                     console.log('watch gapiStatus');
+                    
+                    
                     if (scope.gapiStatus()) {
                         scope.handleClientLoad();
                     }

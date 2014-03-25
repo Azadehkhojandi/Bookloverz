@@ -6458,6 +6458,13 @@ ul.list {
       ul.list.list-people li .person img,
       ul.list.list-people li .book img {
         margin: 0; }
+  ul.list.list-us li {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left;
+    list-style-type: none;
+    height: auto; }
 
 ul.off-canvas-list li a {
   text-transform: uppercase;
@@ -6628,3 +6635,14 @@ ul.off-canvas-list li a {
     .screen-bookoftheday article a img {
       margin: 10px 0;
       clear: both; }
+
+.screen-about .figure {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 41.66667%;
+  float: left; }
+.screen-about article {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  width: 58.33333%;
+  float: left; }

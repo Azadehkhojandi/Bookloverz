@@ -112,6 +112,14 @@ ul.list{
 		
 	}	
 
+	&.list-us{
+		li{
+			@include grid-column(12);
+			list-style-type: none;
+			height: auto;
+		}
+	}
+
 }
 
 ul.off-canvas-list{
@@ -269,4 +277,14 @@ ul.off-canvas-list{
 			}
 	}
 
+}
+
+.screen-about{
+
+	.figure{
+		@include grid-column(5);
+	}
+	article{
+		@include grid-column(7);
+	}
 }

@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 myApp.controller('AroundMe', ['$scope','$location','$anchorScroll', function ($scope,$location,$anchorScroll) {
     $scope.move=function ()
     {
@@ -7,6 +8,13 @@ $location.hash('profile');
 $anchorScroll();
 
     };
+=======
+myApp.controller('AroundMe', ['$rootScope', '$scope', function ($rootScope, $scope) {
+	$rootScope.$on('user.updated', function () {
+		$scope.showNow = true;
+	});
+	
+>>>>>>> 91db1d5eebe1b27773eb08b1426b731331d11a6a
 	$scope.people = [
 		{
 			displayName: 'Allison Jones',
@@ -129,7 +137,7 @@ myApp.
 
 myApp.
     controller('GoogleUserProfileCtrl', [
-        '$scope', '$http','UserService', function ($scope, $http,UserService) {
+        '$rootScope', '$scope', '$http','UserService', function ($rootScope, $scope, $http,UserService) {
           
         $scope.profile=UserService.profile;
         $scope.access_token=UserService.access_token;
@@ -156,8 +164,16 @@ myApp.
           $scope.bookshelves={
             items:{}
           };
+          
+          $rootScope.$on('user.updated', function (newUser){
+	          $scope.test();
+	          $scope.showNow = true;
+          });
+
 
             $scope.test = function () {
+	            
+
 
                 console.log(UserService);
                 console.log('UserService');
