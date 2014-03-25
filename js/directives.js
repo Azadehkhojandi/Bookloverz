@@ -85,15 +85,9 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                             scope.profile.circledByCount=resp.circledByCount;
                             UserService.UpdateProfile(scope.profile);
 
-<<<<<<< HEAD
+
                             //UserInteractionService.postUserInfo().success(handleSuccess);
-=======
-                            scope.profile.displayName=resp.displayName;                          
-                            UserService.profile=scope.profile;
-                            
-                            $rootScope.$broadcast('user.updated');
-                            UserInteractionService.postUserInfo().success(handleSuccess);
->>>>>>> 91db1d5eebe1b27773eb08b1426b731331d11a6a
+
                             scope.$apply();
                         });
                     });

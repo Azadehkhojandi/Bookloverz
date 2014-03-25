@@ -1,20 +1,12 @@
 'use strict';
 
-<<<<<<< HEAD
-myApp.controller('AroundMe', ['$scope','$location','$anchorScroll', function ($scope,$location,$anchorScroll) {
-    $scope.move=function ()
-    {
-$location.hash('profile');
-$anchorScroll();
 
-    };
-=======
 myApp.controller('AroundMe', ['$rootScope', '$scope', function ($rootScope, $scope) {
 	$rootScope.$on('user.updated', function () {
 		$scope.showNow = true;
 	});
 	
->>>>>>> 91db1d5eebe1b27773eb08b1426b731331d11a6a
+
 	$scope.people = [
 		{
 			displayName: 'Allison Jones',
@@ -152,6 +144,8 @@ myApp.
              $scope.$apply();
              console.log($scope.profile);
              console.log('profile-updated');
+             $scope.test();
+              $scope.showNow = true;
            });
 
         $scope.$on('accessToken:updated', function(event,data) {
@@ -165,10 +159,7 @@ myApp.
             items:{}
           };
           
-          $rootScope.$on('user.updated', function (newUser){
-	          $scope.test();
-	          $scope.showNow = true;
-          });
+          
 
 
             $scope.test = function () {
