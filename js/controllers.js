@@ -277,13 +277,13 @@ myApp.
         UserService.lat=data.coords.latitude;
         UserService.long=data.coords.longitude;
         
-        // UserInteractionService.postUserLoc().success(
-        //  function(data, status) {
+         UserInteractionService.postUserLoc().success(
+          function(data, status) {
                     
-        //             console.log('handleSuccess');
-        //             console.log(data);
-        //             console.log(status);
-        //         });
+                     console.log('handleSuccess');
+                     console.log(data);
+                     console.log(status);
+                 });
 
       return {
         lat:data.coords.latitude, 

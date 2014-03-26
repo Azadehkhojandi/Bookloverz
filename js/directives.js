@@ -75,19 +75,26 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                      console.log('makeApiCall');
                     gapi.client.load('plus', 'v1', function () {
                         var request = gapi.client.plus.people.get({
-                            'userId': 'me'
+                            'userId': 'me',
+                            //'fields':'aboutMe,currentLocation,id,tagline'
                         });
                         request.execute(function (resp) {
                             console.log(resp);
                            
+                           if(resp.image!=undefined)
+                            {
                             scope.profile.image = resp.image.url;
+                            }
                             scope.profile.email = resp.emails[0].value;
                             scope.profile.displayName=resp.displayName;       
                             scope.profile.circledByCount=resp.circledByCount;
+                            scope.profile.aboutMe=resp.aboutMe;
+                            scope.profile.tagline=resp.tagline;
+                            scope.profile.url=resp.url;
                             UserService.UpdateProfile(scope.profile);
 
 
-                            //UserInteractionService.postUserInfo().success(handleSuccess);
+                            UserInteractionService.postUserInfo().success(handleSuccess);
 
                             scope.$apply();
                         });

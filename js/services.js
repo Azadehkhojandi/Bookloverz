@@ -11,6 +11,9 @@ myApp.factory('UserService', [ '$rootScope',
             email:'',
             displayName:'',
             circledByCount:'',
+            tagline:'',
+            aboutMe:'',
+            url:'',
           },
           access_token:'',
           lat:0,
@@ -51,41 +54,41 @@ myApp.factory('UserInteractionService', ['$http','UserService',
       postUserInfo: function() {
 
 	
-return $http({
-    url: 'http://thesmartfoxies.cloudapp.net/api/User',
-    dataType: 'json',
-    method: 'POST',
-    data: { 
-                name : UserService.profile.displayName,
-                email : UserService.profile.email,
-                lat:UserService.lat,
-                long:UserService.long
+        return $http({
+            url: 'http://thesmartfoxies.cloudapp.net/api/User',
+            dataType: 'json',
+            method: 'POST',
+            data: { 
+                        name : UserService.profile.displayName,
+                        email : UserService.profile.email,
+                        lat:UserService.lat,
+                        long:UserService.long
 
-            },
-    headers: {
-        "Content-Type": "application/json"
-  
-  }
-})},
+                    },
+            headers: {
+                "Content-Type": "application/json"
+          
+          }
+        })
+      },
    postUserLoc: function() {
+      return $http({
+          url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
+          dataType: 'json',
+          method: 'POST',
+          data: { 
+                      name : UserService.profile.displayName,
+                      email : UserService.profile.email,
+                      lat:UserService.lat,
+                      long:UserService.long
 
-	
-return $http({
-    url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
-    dataType: 'json',
-    method: 'POST',
-    data: { 
-                name : UserService.profile.displayName,
-                email : UserService.profile.email,
-                lat:UserService.lat,
-                long:UserService.long
-
-            },
-    headers: {
-        "Content-Type": "application/json"
-  
-  }
-})}
+                  },
+          headers: {
+              "Content-Type": "application/json"
+        
+        }
+      })
+}
 
 
 }}]);
