@@ -73,7 +73,38 @@ myApp.controller('AroundMe', ['$rootScope', '$scope', function ($rootScope, $sco
 
 myApp.
     controller('SearchCtrl', [
-        '$scope','$http', function ($scope, $http) {
+        '$scope','$http', 'UserService',function ($scope, $http,UserService) {
+
+                $scope.showActionButtonNow =false;
+                $scope.profile=UserService.profile;
+                $scope.access_token=UserService.access_token;
+                console.log('GoogleUserProfileCtrl');
+                console.log(UserService);
+                if($scope.access_token != "" && $scope.access_token != null)
+                     {
+                        $scope.showActionButtonNow =true;
+                     }
+                $scope.$on('profile:updated', function(event,data) {
+                     console.log('on-profile:updated');
+                     console.log(event);
+                     console.log(data);
+                     $scope.profile = data;
+                     $scope.$apply();
+                     console.log($scope.profile);
+                     console.log('profile-updated');
+
+                   });
+
+                $scope.$on('accessToken:updated', function(event,data) {
+                     console.log('on-accessToken:updated');
+                     console.log(event);
+                     console.log(data);
+                     $scope.access_token = data;
+                     if($scope.access_token != "" && $scope.access_token != null)
+                     {
+                        $scope.showActionButtonNow =true;
+                     }
+                   });
 
             $scope.terms = [
                 { value: '', text: 'all' },
@@ -87,7 +118,24 @@ myApp.
             ];
             $scope.term = $scope.terms[0].value; // default
 
+            $scope.AddtoBookShelf=function (BookshelfId,book)
+            {
+                var url='https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/addVolume?volumeId='+book.id +'&access_token='+$scope.access_token;
+                 $http({ method: 'POST', url: url }).
+                    success(function (data, status, headers, config) {
+                        // this callback will be called asynchronously
+                        // when the response is available
+                        console.log(data);
+                        
+                    }).
+                    error(function (data, status, headers, config) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        
+                    });
 
+
+            };
             $scope.search = function () {
                 if ($scope.keyword) {
                     console.log($scope.keyword);
@@ -130,7 +178,7 @@ myApp.
 myApp.
     controller('GoogleUserProfileCtrl', [
         '$rootScope', '$scope', '$http','UserService', function ($rootScope, $scope, $http,UserService) {
-          
+        $scope.showNow =false;
         $scope.profile=UserService.profile;
         $scope.access_token=UserService.access_token;
         console.log('GoogleUserProfileCtrl');
@@ -184,7 +232,7 @@ myApp.
 	                        	if ($scope.bookshelves.items[i].volumeCount>0)
 	                            {
 	                            
-	                                var vurl=$scope.bookshelves.items[i].selfLink+"/volumes"+"?access_token="+UserService.access_token;
+	                                var vurl=$scope.bookshelves.items[i].selfLink+"/volumes"+"?access_token="+$scope.access_token;
 
 	
 	                                $http({ method: 'GET', url: vurl }).

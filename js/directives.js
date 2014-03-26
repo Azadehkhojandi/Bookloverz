@@ -55,6 +55,7 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                 console.log(authResult);                 
                     if (authResult && !authResult.error) {
                         scope.showConnect=false;
+                        UserService.UpdateAccessToken(authResult.access_token);
                         UserService.access_token=authResult.access_token;
                         scope.makeApiCall();
                     } else {
