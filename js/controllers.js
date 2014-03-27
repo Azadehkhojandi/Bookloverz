@@ -1,11 +1,23 @@
 'use strict';
 
 
-myApp.controller('AroundMe', ['$rootScope', '$scope', function ($rootScope, $scope) {
+myApp.controller('AroundMe', ['$rootScope', '$scope','UserInteractionService', function ($rootScope, $scope,UserInteractionService) {
 	$rootScope.$on('user.updated', function () {
 		$scope.showNow = true;
 	});
-	
+	UserInteractionService.postUserLoc().success(
+          function(data, status) {
+                    
+                     console.log('postUserLoc sss');
+                     console.log(data);
+                     console.log(status);
+                 }).
+                    error(function (data, status, headers, config) {
+                        console.log('postUserLoc eeee');
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        
+                    });
 
 	$scope.people = [
 		{
