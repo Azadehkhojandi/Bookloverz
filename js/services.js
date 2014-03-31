@@ -14,6 +14,7 @@ myApp.factory('UserService', [ '$rootScope',
             tagline:'',
             aboutMe:'',
             url:'',
+            id:''
           },
           access_token:'',
           lat:0,
@@ -56,13 +57,17 @@ myApp.factory('UserInteractionService', ['$http','UserService',
 	
         return $http({
             url: 'http://thesmartfoxies.cloudapp.net/api/User',
+           //url:'http://127.0.0.1:81/api/user',
             dataType: 'json',
             method: 'POST',
             data: { 
                         name : UserService.profile.displayName,
                         email : UserService.profile.email,
                         lat:UserService.lat,
-                        long:UserService.long
+                        long:UserService.long,
+                        GoogleAccessToken:UserService.access_token,
+                        GoogleUserId:UserService.profile.id,
+                        Image:UserService.profile.image
 
                     },
             headers: {
@@ -71,17 +76,20 @@ myApp.factory('UserInteractionService', ['$http','UserService',
           }
         })
       },
-   postUserLoc: function() {
+   UserNearby: function() {
       return $http({
           url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
+          //url:'http://127.0.0.1:81/api/UserNearby',
           dataType: 'json',
           method: 'POST',
           data: { 
-                      name : UserService.profile.displayName,
-                      email : UserService.profile.email,
-                      lat:UserService.lat,
-                      long:UserService.long
-
+                  name : UserService.profile.displayName,
+                  email : UserService.profile.email,
+                  lat:UserService.lat,
+                  long:UserService.long,
+                  GoogleAccessToken:UserService.access_token,
+                  GoogleUserId:UserService.id,
+                  Image:UserService.profile.image
                   },
           headers: {
               "Content-Type": "application/json"

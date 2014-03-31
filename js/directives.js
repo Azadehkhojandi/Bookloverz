@@ -91,6 +91,7 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                             scope.profile.aboutMe=resp.aboutMe;
                             scope.profile.tagline=resp.tagline;
                             scope.profile.url=resp.url;
+                            scope.profile.id=resp.id;
                             UserService.UpdateProfile(scope.profile);
 
 

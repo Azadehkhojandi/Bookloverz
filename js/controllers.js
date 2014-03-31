@@ -5,10 +5,10 @@ myApp.controller('AroundMe', ['$rootScope', '$scope','UserInteractionService', f
 	$rootScope.$on('user.updated', function () {
 		$scope.showNow = true;
 	});
-	UserInteractionService.postUserLoc().success(
+	UserInteractionService.UserNearby().success(
           function(data, status) {
                     
-                     console.log('postUserLoc sss');
+                     console.log('UserNearby sss');
                      console.log(data);
                      console.log(status);
                  }).
@@ -289,7 +289,7 @@ myApp.
         UserService.lat=data.coords.latitude;
         UserService.long=data.coords.longitude;
         
-         UserInteractionService.postUserLoc().success(
+         UserInteractionService.UserNearby().success(
           function(data, status) {
                     
                      console.log('handleSuccess');
