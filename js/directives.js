@@ -2,20 +2,49 @@
 
 /* Directives */
 
-myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionService',
-    function ($rootScope, UserService,UserInteractionService) {
+
+myApp.directive('geoLocation', ['$rootScope', 'CurrentUserService', 'UserInteractionService',
+    function ($rootScope, CurrentUserService, UserInteractionService) {
         return {
             restrict: 'A',
             scope: {},
             link: function (scope, element, attrs, ctrl, $timeout) {
-                console.log(UserService);
-                console.log('UserService');
-                scope.showConnect=true;
+
+                console.log('geolocation');
+                scope.showNotSupported = window.navigator;
+
+                window.navigator.geolocation.getCurrentPosition(
+                    function (position) {
+
+                        $rootScope.geoPosition = position;
+                        $rootScope.$digest();
+
+                    }, function (error) {
+                        console.log(error);
+                    });
+
+            },
+            templateUrl: '/templates/geolocation.html',
+            replace: true
+        };
+    }]);
+
+
+
+myApp.directive('googleConnect', ['$rootScope', 'CurrentUserService', 'UserInteractionService',
+    function ($rootScope, CurrentUserService, UserInteractionService) {
+        return {
+            restrict: 'A',
+            scope: {},
+            link: function (scope, element, attrs, ctrl, $timeout) {
+                console.log(CurrentUserService);
+                console.log('CurrentUserService');
+                scope.showConnect = true;
                 scope.profile = {
                     image: ''
                 };
 
-              
+
                 // Enter a client ID for a web application from the Google Developer Console.
                 // The provided clientId will only work if the sample is run directly from
                 // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
@@ -41,7 +70,7 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                 };
 
                 scope.gapiStatus = function () {
-                     console.log('gapiStatus');
+                    console.log('gapiStatus');
                     return (gapi !== undefined && gapi.client !== undefined && gapi.client.setApiKey !== undefined);
                 };
 
@@ -50,17 +79,18 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                 };
 
 
+
                 scope.handleAuthResult = function (authResult) {
-                 console.log('handleAuthResult');  
-                console.log(authResult);                 
+                    console.log('handleAuthResult');
+                    console.log(authResult);
                     if (authResult && !authResult.error) {
-                        scope.showConnect=false;
-                        UserService.UpdateAccessToken(authResult.access_token);
-                        UserService.access_token=authResult.access_token;
+                        scope.showConnect = false;
+                        CurrentUserService.UpdateAccessToken(authResult.access_token);
+                        CurrentUserService.access_token = authResult.access_token;
                         scope.makeApiCall();
                     } else {
-                        scope.showConnect=true;                        
-                        
+                        scope.showConnect = true;
+
                     }
                 };
 
@@ -72,7 +102,7 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
 
                 // Load the API and make an API call.  Display the results on the screen.
                 scope.makeApiCall = function () {
-                     console.log('makeApiCall');
+                    console.log('makeApiCall');
                     gapi.client.load('plus', 'v1', function () {
                         var request = gapi.client.plus.people.get({
                             'userId': 'me',
@@ -80,44 +110,51 @@ myApp.directive('googleConnect', ['$rootScope', 'UserService','UserInteractionSe
                         });
                         request.execute(function (resp) {
                             console.log(resp);
-                           
-                           if(resp.image!=undefined)
-                            {
-                            scope.profile.image = resp.image.url;
+
+                            if (resp.image != undefined) {
+                                scope.profile.image = resp.image.url;
                             }
                             scope.profile.email = resp.emails[0].value;
-                            scope.profile.displayName=resp.displayName;       
-                            scope.profile.circledByCount=resp.circledByCount;
-                            scope.profile.aboutMe=resp.aboutMe;
-                            scope.profile.tagline=resp.tagline;
-                            scope.profile.url=resp.url;
-                            scope.profile.id=resp.id;
-                            UserService.UpdateProfile(scope.profile);
-
-
-                            UserInteractionService.postUserInfo().success(handleSuccess);
-
+                            scope.profile.displayName = resp.displayName;
+                            scope.profile.circledByCount = resp.circledByCount;
+                            scope.profile.aboutMe = resp.aboutMe;
+                            scope.profile.tagline = resp.tagline;
+                            scope.profile.url = resp.url;
+                            scope.profile.id = resp.id;
                             scope.$apply();
+
+                            CurrentUserService.UpdateProfile(scope.profile);
+                            UserInteractionService.PostUserInfo();
+                            UserInteractionService.PostUserInfo().
+                                    success(function (data, status) {
+                                        console.log('handleSuccess');
+                                        console.log(data);
+                                        console.log(status);
+                                    }).
+                                    error(function (data, status, headers, config) {
+                                        console.log("PostUserInfo error");
+                                        console.log(data);
+                                        // called asynchronously if an error occurs
+                                        // or server returns response with an error status.
+                                        //$scope.books=[];
+                                    });
+
+
                         });
                     });
                 };
-                var handleSuccess = function(data, status) {
-                    
-                    console.log('handleSuccess');
-                    console.log(data);
-                    console.log(status);
-                };
 
-                
+
+
                 scope.$watch('gapiStatus', function () {
                     console.log('watch gapiStatus');
-                    
-                    
+
+
                     if (scope.gapiStatus()) {
                         scope.handleClientLoad();
                     }
                 });
-               // scope.gapiStatus();
+                // scope.gapiStatus();
             },
             templateUrl: '/templates/googleconect.html',
             replace: true

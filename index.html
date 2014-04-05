@@ -9,42 +9,58 @@
     <link href='http://fonts.googleapis.com/css?family=Courgette|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/style.css" />
-    
+
 
     <script src="js/foundation/vendor/modernizr.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-    
+
     <script src="/js/app.js"></script>
     <script src="/js/controllers.js"></script>
     <script src="/js/directives.js"></script>
     <script src="/js/services.js"></script>
     <script src="https://apis.google.com/js/client.js"></script>
-    
-    <script src="https://rawgithub.com/arunisrael/angularjs-geolocation/master/dist/angularjs-geolocation.min.js"></script>
-    
+
+
+
 </head>
 
 <body>
-    <div class="off-canvas-wrap"> 
-        <div class="inner-wrap"> 
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MJ25NN"
+            height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-MJ25NN');</script>
+    <!-- End Google Tag Manager -->
 
-            <nav class="tab-bar"> 
-                <section class="left-small"> 
-                    <a class="left-off-canvas-toggle menu-icon" ><span></span></a> 
-                </section> 
-                <section class="middle tab-bar-section"> 
-                    <h1 class="title"></h1> 
-                </section> 
-                <section class="right-small"> 
-                    <a class="right-off-canvas-toggle menu-icon" ><span></span></a> 
-                </section> 
-            </nav> 
+    <div class="off-canvas-wrap">
+        <div class="inner-wrap">
 
-            <aside class="left-off-canvas-menu"> 
-                <ul class="off-canvas-list"> 
-                    <li><label>menu</label></li> 
+            <nav class="tab-bar">
+                <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+                </section>
+                <section class="middle tab-bar-section">
+                    <h1 class="title"></h1>
+                </section>
+                <section class="right-small">
+                    <a class="right-off-canvas-toggle menu-icon"><span></span></a>
+                </section>
+            </nav>
+
+            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list">
+                    <li>
+                        <label>menu</label></li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Connect</a></li>
                     <li>
@@ -54,19 +70,23 @@
                     </li>
                     <li><a href="#">Say What</a></li>
                     <li><a href="#">About the foxies</a></li>
-                </ul> 
-            </aside> 
+                </ul>
+            </aside>
 
-            <aside class="right-off-canvas-menu"> 
-                <ul class="off-canvas-list"> 
-                    <li><label>messages</label></li> 
+            <aside class="right-off-canvas-menu">
+                <ul class="off-canvas-list">
+                    <li>
+                        <label>messages</label></li>
                     <li><a class="new" href="#">Azadeh</a></li>
                     <li><a href="#">Penny</a></li>
                     <li><a href="#">Mary</a></li>
                     <li><a href="#">James</a></li>
-                </ul> 
-            </aside> 
+                </ul>
+            </aside>
 
+            <section>
+                <div data-geo-location=""></div>
+            </section>
 
             <section class="main-section">
 
@@ -75,13 +95,14 @@
                     <img src="img/logo-foxies.gif">
                     <h2>the smart foxies</h2>
                 </div>
+
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
-                
 
-                <div class="screen-search">                    
-                    <div ng-controller="SearchCtrl">
+
+                <div class="screen-search">
+                    <div ng-controller1="SearchCtrl">
                         <ul class="list list-search-results">
                             <li ng-repeat="book in books.items">
                                 <a href="">
@@ -89,19 +110,23 @@
                                     <small ng-repeat="author in book.volumeInfo.authors">
                                         <span>{{author}}</span>
                                     </small>
-                                    <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />                                   
-                                    
+                                    <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+
                                 </a>
                                 <ul class="list">
-                                    <li><button ng-show=showActionButtonNow ng-click="AddtoBookShelf(0,book)">Add to Favorites</button></li>
-                                    <li><button ng-show=showActionButtonNow ng-click="AddtoBookShelf(2,book)">Add it to Read list</button></li>
-                                    <li><button ng-show=showActionButtonNow ng-click="AddtoBookShelf(3,book)">Mark it as Reading it now</button></li>
-                                    <li><button ng-show=showActionButtonNow ng-click="AddtoBookShelf(4,book)">Mark it as you have read it</button></li>
+                                    <li>
+                                        <button ng-show="showActionButtonNow" ng-click="AddtoBookShelf(0,book)">Add to Favorites</button></li>
+                                    <li>
+                                        <button ng-show="showActionButtonNow" ng-click="AddtoBookShelf(2,book)">Add it to Read list</button></li>
+                                    <li>
+                                        <button ng-show="showActionButtonNow" ng-click="AddtoBookShelf(3,book)">Mark it as Reading it now</button></li>
+                                    <li>
+                                        <button ng-show="showActionButtonNow" ng-click="AddtoBookShelf(4,book)">Mark it as you have read it</button></li>
                                 </ul>
-                                    
-                                    
-                                    
-                                    
+
+
+
+
                             </li>
                         </ul>
                         <form ng-submit="search()">
@@ -137,18 +162,18 @@
                 <!-- START: HOME LOGGED IN -->
                 <div class="screen-bookoftheday">
                     <header>
-                        <h3 class="">Book of the day</h3> 
+                        <h3 class="">Book of the day</h3>
                         <p>3 people around you are currently reading</p>
-                    </header> 
+                    </header>
                     <article>
-                        
+
                         <div class="book">
                             <a href="">
                                 <h4 class="">Einmal Sydney und zurueck</h4>
                                 <small>
                                     <span>Katrin Schmidt</span>
                                 </small>
-                                <img src="img/bookoftheday.jpg" width="200"/>
+                                <img src="img/bookoftheday.jpg" width="200" />
                             </a>
                         </div>
                     </article>
@@ -156,10 +181,10 @@
                 <div class="screen-around">
                     <div ng-controller="AroundMe">
                         <header>
-                            <h3 class="">Smart foxies around me</h3> 
-                        </header>  
-                        <ul class="list list-people">  
-                           <li ng-repeat="person in people">
+                            <h3 class="">Smart foxies around me</h3>
+                        </header>
+                        <ul class="list list-people">
+                            <li ng-repeat="person in people">
                                 <a href="#screen-mybooks">
                                     <div class="person">
                                         <img ng-src="{{person.image}}">
@@ -177,7 +202,7 @@
                 <!-- START: PROFILE -->
 
                 <div class="screen-mybooks">
-                    <div ng-controller="GoogleUserProfileCtrl">
+                    <div ng-controller1="GoogleUserProfileCtrl">
 
                         <div class="profile" ng-show="showNow">
 
@@ -186,71 +211,66 @@
                             </header>
                             <div class="figure">
                                 <img ng-src="{{profile.image}}">
-                                
-                                
                             </div>
                             <article>
                                 <h3><span>{{profile.displayName}}</span></h3>
                                 <p>{{profile.circledByCount}} have you in circles</p>
                                 <p>{{profile.aboutMe}}</p>
-                               <p>{{profile.tagline}}</p>
+                                <p>{{profile.tagline}}</p>
                             </article>
                             <div class="button-container">
                                 <a href="{{profile.url}}" class="button" style="margin-top: 15px">Edit profile on google +</a>
-                                
+
                             </div>
                         </div>
 
                         <div ng-repeat="bookshelve in bookshelves.items">
                             <div ng-if="bookshelve.title == 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
                                 <header>
-                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <h3 class="">{{bookshelve.title}}</h3>
                                     <span>{{bookshelve.volumeCount}} in total</span>
                                 </header>
-                                <ul class="list">       
+                                <ul class="list">
                                     <li ng-repeat="volume in bookshelve.volumes.items">
                                         <a href="">
-                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
-                                        <small ng-repeat="author in volume.volumeInfo.authors">
-                                            <span>{{author}}</span>
-                                        </small>
-                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
-                                    </a>
+                                            <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                            <small ng-repeat="author in volume.volumeInfo.authors">
+                                                <span>{{author}}</span>
+                                            </small>
+                                            <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                        </a>
                                     </li>
                                 </ul>
-                            </div>                  
+                            </div>
                         </div>
 
-                        
+
                         <div ng-repeat="bookshelve in bookshelves.items">
-                            <div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">    
+                            <div ng-if="bookshelve.title != 'Reading now' && bookshelve.volumeCount > 0" style="clear: both">
                                 <header>
-                                    <h3 class="">{{bookshelve.title}}</h3> 
+                                    <h3 class="">{{bookshelve.title}}</h3>
                                     <span>{{bookshelve.volumeCount}} in total</span>
-                                </header>  
-                                <ul class="list">      
+                                </header>
+                                <ul class="list">
                                     <li ng-repeat="volume in bookshelve.volumes.items">
                                         <a href="">
-                                        <h4 class="">{{volume.volumeInfo.title}}</h4>
-                                        <small ng-repeat="author in volume.volumeInfo.authors">
-                                            <span>{{author}}</span>
-                                        </small>
-                                        <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
-                                    </a>
+                                            <h4 class="">{{volume.volumeInfo.title}}</h4>
+                                            <small ng-repeat="author in volume.volumeInfo.authors">
+                                                <span>{{author}}</span>
+                                            </small>
+                                            <img ng-src="{{volume.volumeInfo.imageLinks.thumbnail}}" />
+                                        </a>
                                     </li>
-                                <ul>
-                            </div>  
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- END: PROFILE -->
+            </section>
+        </div>
 
-			</div>
-
-            </section> 
-
-            <a class="exit-off-canvas"></a> 
-        </div> 
+        <a class="exit-off-canvas"></a>
     </div>
 
 
@@ -258,17 +278,17 @@
 
 
 
-   
+
+
     <div id="content"></div>
-    
+
 
     <script src="js/foundation/vendor/foundation.min.js"></script>
     <script src="js/foundation/app.js"></script>
 
 
-<div ng-controller="mainCtrl">
-      
-    </div>
+    <!-- <div ng-controller="mainCtrl">
+    </div> -->
 
 
 </body>
