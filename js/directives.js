@@ -11,7 +11,7 @@ myApp.directive('geoLocation', ['$rootScope', 'CurrentUserService', 'UserInterac
             link: function (scope, element, attrs, ctrl, $timeout) {
 
                 console.log('geolocation');
-                scope.showNotSupported = window.navigator;
+                scope.showNotSupported = !window.navigator;
 
                 window.navigator.geolocation.getCurrentPosition(
                     function (position) {
