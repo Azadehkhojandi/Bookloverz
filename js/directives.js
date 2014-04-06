@@ -124,7 +124,7 @@ myApp.directive('googleConnect', ['$rootScope', 'CurrentUserService', 'UserInter
                             scope.$apply();
 
                             CurrentUserService.UpdateProfile(scope.profile);
-                            UserInteractionService.PostUserInfo();
+                            //UserInteractionService.PostUserInfo();
                             UserInteractionService.PostUserInfo().
                                     success(function (data, status) {
                                         console.log('handleSuccess');
