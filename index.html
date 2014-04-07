@@ -39,7 +39,9 @@
     }); var f = d.getElementsByTagName(s)[0],
     j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
     '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-MJ25NN');</script>
+})(window, document, 'script', 'dataLayer', 'GTM-MJ25NN');
+
+    </script>
     <!-- End Google Tag Manager -->
 
     <div class="off-canvas-wrap">
@@ -89,7 +91,6 @@
             </section>
 
             <section class="main-section">
-
                 <!-- START: HOME NOT LOGGED IN -->
                 <div class="screen-home">
                     <img src="img/logo-foxies.gif">
@@ -99,7 +100,6 @@
                 <div class="screen-connect">
                     <div google-connect=""></div>
                 </div>
-
 
                 <div class="screen-search">
                     <div ng-controller="SearchCtrl">
@@ -136,6 +136,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="screen-what">
                     <h1>Say what?</h1>
                     <p>Travelling on public transport can be so dull, right? You stare out of the window and suddenly someone walks by with an awesome book in their hands. You wanna know what it is! NOW!</p>
@@ -158,7 +159,6 @@
                 </div> -->
                 <!-- END: HOME NOT LOGGED IN -->
 
-
                 <!-- START: HOME LOGGED IN -->
                 <div class="screen-bookoftheday">
                     <header>
@@ -178,6 +178,8 @@
                         </div>
                     </article>
                 </div>
+                <!-- END: HOME LOGGED IN -->
+
                 <div class="screen-around">
                     <div ng-controller="AroundMe">
                         <header>
@@ -187,6 +189,7 @@
                             <li ng-repeat="person in people">
                                 <a href="#screen-mybooks">
                                     <div class="person">
+                                        <label>{{person.displayName}}</label>
                                         <img ng-src="{{person.image}}">
                                     </div>
                                     <div class="book">
@@ -197,10 +200,8 @@
                         </ul>
                     </div>
                 </div>
-                <!-- END: HOME LOGGED IN -->
 
                 <!-- START: PROFILE -->
-
                 <div class="screen-mybooks">
                     <div ng-controller="GoogleUserProfileCtrl">
 

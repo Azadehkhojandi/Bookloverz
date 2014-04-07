@@ -22,7 +22,7 @@ myApp.factory('CurrentUserService', ['$rootScope', '$http',
             long: 0,
         };
         CurrentUser.UpdateProfile = function (data) {
-            
+
             CurrentUser.profile = data;
             $rootScope.$broadcast('profile:updated', data);
 
@@ -34,7 +34,7 @@ myApp.factory('CurrentUserService', ['$rootScope', '$http',
         };
         $rootScope.$watch('geoPosition', function (newValue, oldValue) {
             if (oldValue != newValue) {
-            
+
                 CurrentUser.lat = newValue.coords.latitude;
                 CurrentUser.long = newValue.coords.longitude;
 
@@ -49,7 +49,7 @@ myApp.factory('CurrentUserService', ['$rootScope', '$http',
 myApp.factory('UserInteractionService', ['$http', 'CurrentUserService',
     function ($http, CurrentUserService) {
 
-        var postUserInfo = function() {
+        var postUserInfo = function () {
 
             var cUser = {
                 name: CurrentUserService.profile.displayName,
@@ -78,7 +78,7 @@ myApp.factory('UserInteractionService', ['$http', 'CurrentUserService',
                 email: CurrentUserService.profile.email,
                 lat: CurrentUserService.lat,
                 long: CurrentUserService.long,
-                
+
             };
             return $http({
                 url: 'http://thesmartfoxies.cloudapp.net/api/UserNearby',
