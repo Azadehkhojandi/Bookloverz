@@ -26,3 +26,11 @@ you will be able to send the message (hasn't implemented yet)
 
 It will able to suggest you a good books based on analysings others people bookshelves (hasn't implemented yet)
 
+Behind-the-scenes technologies
+
+This project is hosted on Windows Azure http://thesmartfoxies.azurewebsites.net/
+It uses a cloud service hosted on http://thesmartfoxies.cloudapp.net/ to manage users and their locations
+
+
+
+
