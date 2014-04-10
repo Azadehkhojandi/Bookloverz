@@ -54,6 +54,21 @@ git remote add username fork-url
 
 7- Go to your github and ask for pull request 
 
+How to run it locally?
+
+1- you need to install node.js 
+
+2- Download wbe-server.js from https://github.com/Azadehkhojandi/angular-seed/blob/master/scripts/web-server.js 
+
+3- Copy it the thesmartfoxies folder righ near index.html
+
+4- Open node js command line or open your terminal 
+
+5- type node web-server.js
+
+6- now browse http://localhost:8000/index.html
+
+
 
 
 
